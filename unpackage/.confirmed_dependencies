@@ -1,0 +1,7 @@
+{
+  "dist/index.html": {
+    "refer": [
+      "dist/user/index.html"
+    ]
+  }
+}

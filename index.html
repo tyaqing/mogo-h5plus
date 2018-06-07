@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="html5plus://ready"></script>
+  <title>Mogo H5plus</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    plus.key.addEventListener(
+      "backbutton",
+      function () {
+        var ws = plus.webview.currentWebview();
+        plus.webview.close(ws);
+      },
+      false
+    );
+    // plus.nativeUI.toast('嘿嘿');
+  </script>
+</body>
+
+
+</html>
