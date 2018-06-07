@@ -4,7 +4,7 @@ module.exports = {
   base: "/mogo-h5plus/",
   themeConfig: {
     nav: [{ text: "主页", link: "/" }, { text: "教程", link: "/guide.md" }],
-    repo: "vuejs/vuepress",
+    repo: "tyaqing/mogo-h5plus",
     editLinks: true,
     search: true
   }
