@@ -2,6 +2,8 @@
 
 ## [文档地址](https://tyaqing.github.io/mogo-h5plus/)
 
+### MogoH5+ QQ交流群 780150310
+
 ## 部分截图
 
 ![s1](https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s1.png?raw=true)
