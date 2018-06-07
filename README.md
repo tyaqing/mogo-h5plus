@@ -9,5 +9,3 @@
 ![s1](https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s2.png?raw=true)
 
 ![s1](https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s3.png?raw=true)
-
-![s1](https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s4.png?raw=true)
