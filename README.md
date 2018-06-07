@@ -1,10 +1,8 @@
 
 
-<div align=center>
-  
-![logo](https://tyaqing.github.io/mogo-h5plus/logo.png)
+<div align=center><img width="50%"  src="https://tyaqing.github.io/mogo-h5plus/logo.png"/></div>
 
-</div>
+
 
 # MogoH5+ 多页面网页解决脚手架
 
