@@ -8,6 +8,8 @@ sidebar: auto
 
 即使不适用 Hbuilder 打包成 APP,本脚手架同样可以作为多页面网页生成的参考项目.
 
+### [APP 演示下载地址](https://fir.im/p52j)
+
 ## 特性
 
 - `支持 Npm 生态`
@@ -15,7 +17,7 @@ sidebar: auto
 - `支持 ES6/ES7 语法`
 - `使用 VConsole 调试`
 - `VSCode 友好`
-- `局域网便捷调试`
+- `局域网便捷调试,不插数据线也可以调试`
 - `兼容部分 mui 语法`
 
 这些特性其实不是什么新鲜特性,只是单独在 Hbuilder 无法使用.
