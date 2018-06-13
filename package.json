@@ -1,11 +1,13 @@
 {
   "name": "mogo-h5plus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Scaffolding To Develop H5+ App Fast.",
   "main": "./dist/index.html",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "cd docs && vuepress dev",
+    "docs:build": "cd docs && vuepress build",
+    "docs:publish": "cd docs && ./deploy.sh",
+    "dev": "npm start",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack"
   },

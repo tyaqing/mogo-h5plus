@@ -9,20 +9,22 @@
         <small>下拉Ajax请求试试</small>
       </div>
       <van-collapse v-model="activeName" accordion>
-        <van-collapse-item title="Vant组件演示" name="1">
+        <van-collapse-item title="plus演示" name="1">
+          <van-cell-group>
+            <van-cell @click="openGoodsDetail()" title="打开商品详情窗口" is-link />
+            <van-cell @click="camera" title="拍照" is-link />
+            <van-cell @click="plusMap" title="打开地图" is-link />
+            <van-cell @click="toast" title="原生Toast" is-link />
+          </van-cell-group>
+        </van-collapse-item>
+        <van-collapse-item title="Vant组件演示" name="2">
           <van-cell-group>
             <van-cell @click="openAS" title="Actionsheet" is-link />
             <van-cell @click="vantToast" title="Toast" is-link />
             <van-cell @click="vantDialog" title="Dialog" is-link />
           </van-cell-group>
         </van-collapse-item>
-        <van-collapse-item title="plus演示" name="2">
-          <van-cell-group>
-            <van-cell @click="openGoodsDetail()" title="打开商品详情窗口" is-link />
-            <van-cell @click="plusMap" title="打开地图" is-link />
-            <van-cell @click="toast" title="原生Toast" is-link />
-          </van-cell-group>
-        </van-collapse-item>
+
       </van-collapse>
       <br>
       <br>
@@ -105,6 +107,27 @@ export default {
   },
 
   methods: {
+    camera() {
+      var cmr = plus.camera.getCamera();
+      cmr.captureImage(
+        function(p) {
+          plus.nativeUI.alert("成功：" + p);
+          plus.io.resolveLocalFileSystemURL(
+            p,
+            function(entry) {
+              // createItem(entry);
+            },
+            function(e) {
+              console.log("读取拍照文件错误：" + e.message);
+            }
+          );
+        },
+        function(e) {
+          console.log("失败：" + e.message);
+        },
+        { filename: "_doc/camera/", index: 1 }
+      );
+    },
     plusMap() {
       openWebview(
         {

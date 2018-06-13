@@ -6,6 +6,8 @@
 # 生成静态文件
 # npm run docs:build
 
+vuepress build
+
 # 进入生成的文件夹
 cd .vuepress/dist
 
