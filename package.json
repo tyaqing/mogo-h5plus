@@ -1,6 +1,6 @@
 {
   "name": "mogo-h5plus",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Scaffolding To Develop H5+ App Fast.",
   "main": "./dist/index.html",
   "scripts": {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="text-align:center">
-      <img width="60%" src="../img/logo.png" alt="">
+      <img width="60%" src="assets/logo.png" alt="">
     </div>
     <van-tag mark type="success">0.1.0</van-tag>
 
