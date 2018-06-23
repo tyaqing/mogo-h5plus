@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-[![GitHub release](https://img.shields.io/github/release/tyaqing/mogo-h5plus.svg)](https://github.com/tyaqing/mogo-h5plus/releases/new)
+![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
 
 # 简介
 
