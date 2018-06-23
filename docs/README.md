@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /logo.png
-actionText: Get Started →
+actionText: 查看文档 →
 actionLink: /guide.md
 features:
 - title: Vue多页面

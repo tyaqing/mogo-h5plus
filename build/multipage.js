@@ -24,7 +24,8 @@ for (let i in pagesPath) {
     new HtmlWebpackPlugin({
       filename: i + ".html",
       template: "index.html",
-      chunks: [i]
+      chunks: [i],
+      muiSourcePath: "../"
     })
   );
 }

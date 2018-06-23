@@ -24,6 +24,11 @@
             <van-cell @click="vantDialog" title="Dialog" is-link />
           </van-cell-group>
         </van-collapse-item>
+        <van-collapse-item title="Mui组件演示" name="3">
+          <van-cell-group>
+            <van-cell @click="openMui" title="Mui演示页" is-link />
+          </van-cell-group>
+        </van-collapse-item>
 
       </van-collapse>
       <br>
@@ -107,6 +112,17 @@ export default {
   },
 
   methods: {
+    openMui() {
+      openWebview(
+        {
+          url: "./mui/index.html",
+          id: "mui.index"
+        },
+        {
+          bounce: "none"
+        }
+      );
+    },
     camera() {
       var cmr = plus.camera.getCamera();
       cmr.captureImage(
@@ -132,7 +148,7 @@ export default {
       openWebview(
         {
           url: "./map/map.html",
-          id: "./map/map.html"
+          id: "map.map"
         },
         {
           bounce: "none"
@@ -177,7 +193,7 @@ export default {
     openGoodsDetail() {
       openWebview({
         url: "./goods/detail.html",
-        id: "./goods/detail.html"
+        id: "goods.detail"
       });
     }
   },

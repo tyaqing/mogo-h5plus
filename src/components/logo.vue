@@ -3,7 +3,7 @@
     <div style="text-align:center">
       <img width="60%" src="assets/logo.png" alt="">
     </div>
-    <van-tag mark type="success">0.1.0</van-tag>
+    <van-tag mark type="success">0.2.0</van-tag>
 
   </div>
 

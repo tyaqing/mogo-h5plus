@@ -74,7 +74,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "index.html",
-      chunks: ["index"]
+      chunks: ["index"],
+      muiSourcePath: "./"
     }),
     ...extraHtmlWebpackPlugins,
     new VueLoaderPlugin(),

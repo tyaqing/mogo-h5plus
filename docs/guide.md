@@ -2,7 +2,9 @@
 sidebar: auto
 ---
 
-# 使用手册
+[![GitHub release](https://img.shields.io/github/release/tyaqing/mogo-h5plus.svg)](https://github.com/tyaqing/mogo-h5plus/releases/new)
+
+# 简介
 
 `MogoH5+` 是一个 vue 多页面**脚手架工具**,结合 H5+可以快速开发安卓与苹果 APP.
 
@@ -18,24 +20,58 @@ sidebar: auto
 - `使用 VConsole 调试`
 - `VSCode 友好`
 - `局域网便捷调试,不插数据线也可以调试`
-- `兼容部分 mui 语法`
+- `支持mui`
 
-这些特性其实不是什么新鲜特性,只是单独在 Hbuilder 无法使用.
+# 快速上手
 
-## 快速上手
+## 下载脚手架
+
+首先下载脚手架
+脚手架项目地址[MogoH5+](https://github.com/tyaqing/mogo-h5plus)
+
+### Git clone
+
+```
+git clone https://github.com/tyaqing/mogo-h5plus.git
+```
+
+### 直接下载
+
+[下载地址](https://github.com/tyaqing/mogo-h5plus/archive/master.zip)
+
+下载后把目录直接导入到 Hbuilder.
+
+## 运行脚手架
+
+```
+// 1 进入项目主目录
+cd mogo-h5plus
+// 2 安装npm依赖
+npm i  // 或者 yarn
+// 3 调试运行
+npm start
+
+// 运行结果如下
+ℹ ｢wds｣: Project is running at http://192.168.199.155:8080/
+ℹ ｢wds｣: webpack output is served from /
+ℹ ｢wdm｣: Hash: e597725cca065f694fbd
+Version: webpack 4.10.2
+Time: 4959ms
+```
 
 直接下载项目然后根据需求定制打包,最后通过 Hbuilder 云打包即可生成 APP.
 
 > 本文自带一个案例是使用 VantUI 开发的几个界面,如果你喜欢其他 UI 同样可以替换成其他的 UI.
 
-```bash
-// 1.安装模块
-npm i  // or yarn
-// 2.调试
-npm start   // 将manifest.json 的`页面入口` 修改成 http://your_ip:8082/
-// 3.打包
-npm run build
-```
+## 真机调试
+
+将打印出来的 ip 地址,我们打印出来的是`http://192.168.199.155:8080/`,将这个填入页面入口.
+
+![](https://user-gold-cdn.xitu.io/2018/6/12/163f19299efa1d44?w=606&h=244&f=png&s=25160)
+
+然后使用 Hbuilder 基座进行调试测试.
+
+![](https://user-gold-cdn.xitu.io/2018/6/12/163f1938c91c9e1d?w=687&h=112&f=png&s=72460)
 
 ## 使用
 
@@ -45,6 +81,7 @@ npm run build
 
 ```
 .
+├── assets  // 静态资源
 ├── docs  // 文档
 ├── index.html // 入口模板
 ├── jsconfig.json //js配置
@@ -132,7 +169,7 @@ request({
 
 :::
 
-### 调试
+## 调试
 
 在 Hbuilder 中调试会有诸多问题,比如:
 
@@ -148,7 +185,7 @@ request({
 
 基本上就是一个简化的`开发者工具栏`,对于调试来说非常简便了.
 
-### 打包
+## 打包
 
 ```bash
 npm run build
@@ -161,8 +198,37 @@ npm run build
 在使用 Hbuilder 制作安装包前,请将`入口文件`修改成`dist/index.html`.
 然后可以安心的打包了.
 
-## 兼容 mui.js
+## 如何使用 mui
 
-对于兼容 mui 部分函数的问题,已经在移植部分函数到`Utils`中,在未来的更新中会慢慢移植.
+mui 默认未加载,但是相对应的 js 和 css 放在了 `assets` 目录下.如果需要使用,请按下面步骤操作
+
+### 1.去掉加载注释
+
+在根目录下去掉下面两段标签的注释
+
+```html
+<!-- 如果有使用mui,就不要注释下面两个标签 -->
+<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.muiSourcePath %>assets/css/mui.min.css">
+<script src="<%= htmlWebpackPlugin.options.muiSourcePath %>assets/js/mui.min.js"></script>
+```
+
+### 2.使用`npm run build:mui`打包
+
+> 这个命令会复制`assets`中的文件到打包目录.
 
 ## 常见问题
+
+常见问题一般来说就是白屏问题,或者页面不存在,可能有以下几种情况
+
+**Q1:删除一些页面后控制台报错**
+
+这是由于`HtmlWebpackPlugin`没有找到模板的问题,只需要重新`npm start`即可.
+
+**Q2:`npm start`控制台报语法错误**
+
+请升级你的 node 到最新版本
+
+**Q3:`npm start`后出现空白页面无法显示**
+
+1.  电脑和调试的手机需要在同一个局域网下面
+2.  `npm start`后如果局域网 ip 地址有变,请同时在 manifest.json 中修改页面入口

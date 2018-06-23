@@ -1,6 +1,6 @@
 {
   "name": "mogo-h5plus",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Scaffolding To Develop H5+ App Fast.",
   "main": "./dist/index.html",
   "scripts": {
@@ -9,7 +9,8 @@
     "docs:publish": "cd docs && ./deploy.sh",
     "dev": "npm start",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "build:mui": "cross-env NODE_ENV=production webpack && cp -r ./assets ./dist"
   },
   "keywords": [
     "h5plus",
@@ -45,5 +46,8 @@
     "fastclick": "^1.0.6",
     "vant": "^1.1.5",
     "vue": "^2.5.16"
+  },
+  "engines": {
+    "node": ">=9.3.0"
   }
 }
