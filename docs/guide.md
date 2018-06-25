@@ -15,7 +15,7 @@ sidebar: auto
 ## 特性
 
 - `支持 Npm 生态`
-- `支持 vue 语法,以及 vue 生态,比如 vux,mint,vant`
+- `支持 vue 语法,以及 vue 生态,比如 mint,vant`
 - `支持 ES6/ES7 语法`
 - `使用 VConsole 调试`
 - `VSCode 友好`
