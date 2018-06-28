@@ -107,6 +107,33 @@ Time: 4959ms
 !!! 后缀一定是`.html`
 :::
 
+### 新建页面/删除页面[0.3.0]
+
+0.3.0 的新建页面和 0.2.0 是兼容的,但是建议您使用 0.3.0 的`page.json`,这样会减少很多因为新建,删除页面产生的错误
+如果您需要更自由的页面结构,比如三级目录.可以按照`page.json`格式添加即可.
+
+```json
+{
+  "goods/detail": "./src/page/goods/detail.js",
+  "map/map": "./src/page/map/map.js",
+  "mui/index": "./src/page/mui/index.js",
+  "user/index": "./src/page/user/index.js"
+}
+```
+
+比如您需要一个添加一个三级级页面,可以按照下面的方法添加,
+
+```json
+{
+  ...
+  "user/index/point": "./src/page/user/point/index.js"
+}
+```
+
+如果删除页面了页面,也需要删除`page.json`相应的页面描述代码
+
+> 实现原理是监听了`page.json`,一旦`page.json`发生改变,会重启`webpack`
+
 ### 新建组件
 
 组件放入`./src/components`目录下,如果组件较多,可自行建立目录.比如 demo 中使用的 Logo 组件可以作为参考.
