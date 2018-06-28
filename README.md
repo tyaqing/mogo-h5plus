@@ -20,6 +20,17 @@
 
 ### MogoH5+ QQ 交流群 780150310
 
+## 更新记录
+
+### 0.3.0 [20180628]
+
+- 解决了因为新增/删除页面导致的 webpack 错误
+- 添加了 openWebview 的 extras 参数
+
+### 0.2.0 [20180623]
+
+- 添加了对 mui 样式和 js 的支持
+
 ## 部分截图
 
 <div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s1.png?raw=true"/></div>
