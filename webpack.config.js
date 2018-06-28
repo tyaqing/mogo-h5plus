@@ -4,11 +4,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
+// 多页面配置
 const multiBuilder = require("./build/multipage");
+// 调试服务器/代理配置
 const devServer = require("./build/dev");
 
-const extraEntry = multiBuilder.extraEntry;
-const extraHtmlWebpackPlugins = multiBuilder.extraHtmlWebpackPlugins;
+const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
 
 // 定义替换内容
 let Defines = {};
