@@ -1,8 +1,0 @@
-node_modules
-docs/.vuepress/dist
-dist
-*/.DS_Store
-.DS_Store?
-.DS_Store
-unpackage/debug
-unpackage/release

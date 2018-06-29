@@ -1,6 +1,0 @@
-{
-  "goods/detail": "./src/page/goods/detail.js",
-  "map/map": "./src/page/map/map.js",
-  "mui/index": "./src/page/mui/index.js",
-  "user/index": "./src/page/user/index.js"
-}
