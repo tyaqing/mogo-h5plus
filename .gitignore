@@ -13,3 +13,7 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+#Hbuilder
+unpackage/debug/
+unpackage/release/
