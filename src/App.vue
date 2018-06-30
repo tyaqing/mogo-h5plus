@@ -3,7 +3,7 @@
     <van-pull-refresh class="content" v-model="isLoading" @refresh="onRefresh">
       <br>
       <br>
-      <br>
+
       <Logo></Logo>
       <div style="padding:10px 15px;text-align:center">
         <small>下拉Ajax请求试试😋</small>
@@ -13,11 +13,11 @@
           <van-cell-group>
             <van-cell @click="openGoodsDetail()" title="打开商品详情窗口" is-link />
             <van-cell @click="camera" title="拍照" is-link />
-            <van-cell @click="plusMap" title="打开地图" is-link />
+            <!-- <van-cell @click="plusMap" title="打开地图" is-link /> -->
             <van-cell @click="toast" title="原生Toast" is-link />
           </van-cell-group>
         </van-collapse-item>
-        <van-collapse-item title="Vant组件演示" name="2">
+        <van-collapse-item title="Vant组件演示 " name="2">
           <van-cell-group>
             <van-cell @click="openAS" title="Actionsheet" is-link />
             <van-cell @click="vantToast" title="Toast" is-link />
@@ -27,6 +27,11 @@
         <van-collapse-item title="Mui组件演示" name="3">
           <van-cell-group>
             <van-cell @click="openMui" title="Mui演示页" is-link />
+          </van-cell-group>
+        </van-collapse-item>
+        <van-collapse-item title="vux组件演示" name="4">
+          <van-cell-group>
+            <van-cell @click="openVux" title="vux演示页" is-link />
           </van-cell-group>
         </van-collapse-item>
 
@@ -47,9 +52,9 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import { openWebview } from '@/utils/webview'
-import {request} from '@/utils/request'
+import Vue from "vue";
+import { openWebview } from "@/utils/webview";
+import { request } from "@/utils/request";
 import {
   Dialog,
   CellGroup,
@@ -64,8 +69,8 @@ import {
   Tag,
   Collapse,
   CollapseItem
-} from 'vant'
-import Logo from './components/logo.vue'
+} from "vant";
+import Logo from "./components/logo.vue";
 export default {
   components: {
     Logo,
@@ -83,10 +88,10 @@ export default {
     [Collapse.name]: Collapse,
     [CollapseItem.name]: CollapseItem
   },
-  created () {},
-  data () {
+  created() {},
+  data() {
     return {
-      activeName: '1',
+      activeName: "1",
       count: 0,
       isLoading: false,
       active: 0,
@@ -96,108 +101,119 @@ export default {
       show: false,
       actions: [
         {
-          name: '选项',
+          name: "选项",
           callback: this.onClick
         },
         {
-          name: '选项',
-          subname: '描述信息'
+          name: "选项",
+          subname: "描述信息"
         },
         {
-          name: '选项',
+          name: "选项",
           loading: true
         }
       ]
-    }
+    };
   },
 
   methods: {
-    openMui () {
+    openVux() {
       openWebview(
         {
-          url: './mui/index.html',
-          id: 'mui.index'
+          url: "./vux/index.html",
+          id: "vux.index"
         },
         {
-          bounce: 'none'
+          bounce: "none"
         }
-      )
+      );
     },
-    camera () {
-      var cmr = plus.camera.getCamera()
+    openMui() {
+      openWebview(
+        {
+          url: "./mui/index.html",
+          id: "mui.index"
+        },
+        {
+          bounce: "none"
+        }
+      );
+    },
+    camera() {
+      var cmr = plus.camera.getCamera();
       cmr.captureImage(
-        function (p) {
-          plus.nativeUI.alert('成功：' + p)
+        function(p) {
+          plus.nativeUI.alert("成功：" + p);
           plus.io.resolveLocalFileSystemURL(
             p,
-            function (entry) {
+            function(entry) {
               // createItem(entry);
             },
-            function (e) {
-              console.log('读取拍照文件错误：' + e.message)
+            function(e) {
+              console.log("读取拍照文件错误：" + e.message);
             }
-          )
+          );
         },
-        function (e) {
-          console.log('失败：' + e.message)
+        function(e) {
+          console.log("失败：" + e.message);
         },
-        { filename: '_doc/camera/', index: 1 }
-      )
+        { filename: "_doc/camera/", index: 1 }
+      );
     },
-    plusMap () {
+    plusMap() {
       openWebview(
         {
-          url: './map/map.html',
-          id: 'map.map'
+          url: "./map/map.html",
+          id: "map.map"
         },
         {
-          bounce: 'none'
+          bounce: "none"
         }
-      )
+      );
     },
-    vantDialog () {
+    vantDialog() {
       Dialog.alert({
-        title: '标题',
-        message: '弹窗内容'
+        title: "标题",
+        message: "弹窗内容"
       }).then(() => {
         // on close
-      })
+      });
     },
-    vantToast () {
-      Toast('我是提示文案，建议不超过十五字~')
+    vantToast() {
+      Toast("我是提示文案，建议不超过十五字~");
     },
-    toast () {
-      plus.nativeUI.toast('Hier')
+    toast() {
+      plus.nativeUI.toast("Hier");
     },
-    alert () {
-      plus.nativeUI.alert('Hier')
+    alert() {
+      plus.nativeUI.alert("Hier");
     },
-    onRefresh () {
-      this.isLoading = true
+    onRefresh() {
+      this.isLoading = true;
       request({
-        url: DOUBANAPI + '/v2/book/search?q=javascript&count=2'
+        url: DOUBANAPI + "/v2/book/search?q=javascript&count=2"
       })
         .then(res => {
-          this.isLoading = false
-          plus.nativeUI.toast('Ajax请求成功')
-          console.log(res)
+          this.isLoading = false;
+          plus.nativeUI.toast("Ajax请求成功");
+          console.log(res);
         })
         .catch(err => {
-          this.isLoading = false
-          console.error(err)
-        })
+          this.isLoading = false;
+          console.error(err);
+        });
     },
-    openAS () {
-      this.show = !this.show
+    openAS() {
+      this.show = !this.show;
     },
-    openGoodsDetail () {
+    openGoodsDetail() {
       openWebview({
-        url: './goods/detail.html',
-        id: 'goods.detail'
-      })
+        url: "./goods/detail.html",
+        id: "goods.detail"
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="less">
