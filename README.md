@@ -1,40 +1,27 @@
-<div align=center><img width="50%"  src="https://tyaqing.github.io/mogo-h5plus/logo.png"/></div>
+# mogo-h5plus
 
-### [APP 演示下载地址](https://fir.im/p52j)
+> A Scaffolding To Develop H5+ App Fast.
 
-![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
+## Build Setup
 
-# MogoH5+ 多页面网页解决脚手架
+``` bash
+# install dependencies
+npm install
 
-结合 Hbuilder 使用,可以快速开发 WebApp
+# serve with hot reload at localhost:8080
+npm run dev
 
-- `支持 Npm 生态`
-- `支持 vue 语法,以及 vue 生态,比如 vux,mint,vant`
-- `支持 ES6/ES7 语法`
-- `使用 VConsole 调试`
-- `VSCode 友好`
-- `局域网便捷调试,不插数据线也可以调试`
-- `支持mui的使用`
+# build for production with minification
+npm run build
 
-## [文档地址](https://tyaqing.github.io/mogo-h5plus/)
+# build for production and view the bundle analyzer report
+npm run build --report
 
-### MogoH5+ QQ 交流群 780150310
+# run unit tests
+npm run unit
 
-## 更新记录
+# run all tests
+npm test
+```
 
-### 0.3.0 [20180628]
-
-- 解决了因为新增/删除页面导致的 webpack 错误
-- 添加了 openWebview 的 extras 参数
-
-### 0.2.0 [20180623]
-
-- 添加了对 mui 样式和 js 的支持
-
-## 部分截图
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s1.png?raw=true"/></div>
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s2.png?raw=true"/></div>
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s2.png?raw=true"/></div>
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

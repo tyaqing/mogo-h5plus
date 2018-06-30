@@ -1,14 +1,14 @@
 /**
  * http请求模块
  */
-import axios from "axios";
+import axios from 'axios'
 
-exports.request = async function(data) {
+export async function request (data) {
   const conf = {
     headers: {
       // Authorization: "token"
     },
     ...data
-  };
-  return await axios(conf);
-};
+  }
+  return await axios(conf)
+}

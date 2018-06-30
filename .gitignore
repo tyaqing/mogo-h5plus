@@ -1,8 +1,19 @@
-node_modules
-docs/.vuepress/dist
-dist
-*/.DS_Store
-.DS_Store?
 .DS_Store
-unpackage/debug
-unpackage/release
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+#Hbuilder
+unpackage/debug/
+unpackage/release/
