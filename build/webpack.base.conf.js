@@ -1,8 +1,14 @@
 'use strict'
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const multiBuilder = require("./multipage");
+
+const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -19,10 +25,31 @@ const createLintingRule = () => ({
   }
 })
 
+// 定义替换内容
+let Defines = {};
+const devServer = {
+  proxy:config.dev.proxyTable
+};
+for (let p in devServer.proxy) {
+  Defines[devServer.proxy[p].name] = JSON.stringify(p);
+  // devServer.proxy[p].name;
+}
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV === "production") {
+  for (let p in devServer.proxy) {
+    Defines[devServer.proxy[p].name] = JSON.stringify(
+      devServer.proxy[p].target
+    );
+    // devServer.proxy[p].name;
+  }
+}
+
+
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    ...extraEntry
   },
   output: {
     path: config.build.assetsRoot,
@@ -88,5 +115,9 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    ...extraHtmlWebpackPlugins,
+    new webpack.DefinePlugin(Defines)
+  ]
 }
