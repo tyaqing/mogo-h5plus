@@ -7,16 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="html5plus://ready"></script>
 
-  <!-- 如果有使用mui,就不要注释下面两个标签 -->
-  <!-- <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.muiSourcePath %>./src/assets/mui/mui.min.css"> -->
-  <!-- <script src="<%= htmlWebpackPlugin.options.muiSourcePath %>./src/assets/mui/mui.min.js"></script> -->
+  <!-- 如果有使用mui,就不要注释下面的标签  -->
+  <script><%= htmlWebpackPlugin.options.muiScriptString %></script>
+
 
   <title>Mogo H5plus</title>
 </head>
 
 <body>
   <div id="app"></div>
-
   <script>
     plus.key.addEventListener(
       "backbutton",

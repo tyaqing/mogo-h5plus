@@ -25,7 +25,7 @@ const createLintingRule = () => ({
   }
 })
 
-// 定义替换内容
+//  替换代理的链接 定义替换内容
 let Defines = {};
 const devServer = {
   proxy:config.dev.proxyTable
@@ -43,7 +43,6 @@ if (process.env.NODE_ENV === "production") {
     // devServer.proxy[p].name;
   }
 }
-
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -63,6 +62,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'mui':resolve('src')+'/assets/mui/'
     }
   },
   module: {

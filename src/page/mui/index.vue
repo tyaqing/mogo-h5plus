@@ -34,17 +34,19 @@
 </template>
 
 <script>
+
 export default {
   methods: {
-    alert() {
-      mui.alert("Mogo H5+");
+    alert () {
+      mui.alert('Mogo H5+')
     },
-    toast() {
-      mui.toast("嘿嘿,有问题issue哦");
+    toast () {
+      mui.toast('嘿嘿,有问题issue哦')
     }
   }
-};
+}
 </script>
 
 <style lang="less">
+@import '../../assets/mui/mui.css';
 </style>

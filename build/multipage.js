@@ -18,7 +18,8 @@ for (let i in extraEntry) {
       filename: i + ".html",
       template: "index.html",
       chunks: [i],
-      muiSourcePath: "../"
+      muiScriptString:require('./mui-loader')
+      // 获取mui的script 
     })
   );
 }

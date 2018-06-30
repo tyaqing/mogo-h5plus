@@ -56,7 +56,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       chunks: ["app"],
-      inject: true
+      inject: true,
+      muiScriptString:require('./mui-loader')
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
