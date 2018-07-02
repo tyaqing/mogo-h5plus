@@ -5,12 +5,14 @@
   "author": "滕亚庆 <626019610@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "nodemon -e json --exec  \"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js\"",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src test/unit"
+    "lint": "eslint --ext .js,.vue src test/unit",
+    "docs:dev": "cd docs && vuepress dev",
+    "docs:publish": "cd docs && ./deploy.sh"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -56,6 +58,7 @@
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "node-notifier": "^5.1.2",
+    "nodemon": "^1.17.5",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
