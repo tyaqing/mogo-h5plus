@@ -13,6 +13,5 @@ export const fire = function(webview, eventType, data) {
     bubbles: true,
     cancelable: true
   }));
-  return this;
   `);
 };

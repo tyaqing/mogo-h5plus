@@ -17,14 +17,21 @@
 <body>
   <div id="app"></div>
   <script>
-      plus.key.addEventListener(
-        "backbutton",
-        function () {
-          var ws = plus.webview.currentWebview();
-          plus.webview.close(ws);
-        },
-        false
-      );
+      function plusReady() {
+        plus.key.addEventListener(
+          "backbutton",
+          function () {
+            var ws = plus.webview.currentWebview();
+            plus.webview.close(ws);
+          },
+          false
+        );
+      }
+    if (window.plus) {
+      plusReady();
+    } else {
+      document.addEventListener("plusready", plusReady, false);
+    }
     // plus.nativeUI.toast('嘿嘿');
   </script>
 </body>

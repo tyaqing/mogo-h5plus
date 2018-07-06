@@ -1,1 +1,7 @@
-null
+{
+  "dist/index.html": {
+    "refer": [
+      "dist/goods.detail.html"
+    ]
+  }
+}
