@@ -209,7 +209,8 @@
 				"resources": [],
 				"refer": [
 					"dist/user/index.html",
-					"dist/goods.detail.html"
+					"dist/goods.detail.html",
+					"dist/mui.index.html"
 				],
 				"priority": 0
 			}

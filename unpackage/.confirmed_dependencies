@@ -1,7 +1,9 @@
 {
   "dist/index.html": {
     "refer": [
-      "dist/goods.detail.html"
-    ]
+      "dist/goods.detail.html",
+      "dist/mui.index.html"
+    ],
+    "resources": []
   }
 }

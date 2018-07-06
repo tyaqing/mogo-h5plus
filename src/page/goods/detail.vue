@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     sendEvent() {
-      const indexWebview = plus.webview.getWebviewById("HBuilder");
+      const indexWebview = plus.webview.getLaunchWebview();
       fire(indexWebview, "customEvent", { name: "ArH", project: "MogoH5+" });
     },
     formatPrice() {
