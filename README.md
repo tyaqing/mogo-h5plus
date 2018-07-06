@@ -41,6 +41,8 @@
 
 如果要使用 mui 就加入 `|mui`, 如果要使用 mui 就加入 `|plusReady`,不用则不加.
 
+> plusReady 在安卓手机上提前载入可能会影响页面打开速度,解决方法有两种:1 不提前使 plus 生效 2.预加载 plus
+
 ```json
 {
   "mui.index|mui|plusReady": "./src/page/mui/index.js"
