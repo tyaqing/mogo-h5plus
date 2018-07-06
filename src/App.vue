@@ -88,7 +88,22 @@ export default {
     [Collapse.name]: Collapse,
     [CollapseItem.name]: CollapseItem
   },
-  created() {},
+  created() {
+    window.addEventListener("customEvent", function(event) {
+      //通过event.detail可获得传递过来的参数内容
+      plus.nativeUI.toast("我是首页,我很慌,我收到了信息");
+      console.log(event.detail);
+    });
+    function plusReady() {
+      let ws = plus.webview.currentWebview();
+      console.log(ws);
+    }
+    if (window.plus) {
+      plusReady();
+    } else {
+      document.addEventListener("plusready", plusReady, false);
+    }
+  },
   data() {
     return {
       activeName: "1",

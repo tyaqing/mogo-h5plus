@@ -39,8 +39,8 @@
       <van-goods-action-mini-btn icon="cart" @click="onClickCart">
         购物车
       </van-goods-action-mini-btn>
-      <van-goods-action-big-btn @click="sorry">
-        加入购物车
+      <van-goods-action-big-btn @click="sendEvent">
+        触发首页事件
       </van-goods-action-big-btn>
       <van-goods-action-big-btn primary @click="sorry">
         立即购买
@@ -63,6 +63,9 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from "vant";
+
+import { fire } from "../../utils/envent.js";
+
 export default {
   components: {
     [Tag.name]: Tag,
@@ -94,7 +97,7 @@ export default {
     function plusReady() {
       let ws = plus.webview.currentWebview();
       // 预载网络页面
-      plus.nativeUI.alert(
+      plus.nativeUI.toast(
         `我收到的信息是:{"id":"${ws.id}","name":"${ws.name}"}`
       );
       console.log(ws);
@@ -106,6 +109,10 @@ export default {
     }
   },
   methods: {
+    sendEvent() {
+      const indexWebview = plus.webview.getWebviewById("HBuilder");
+      fire(indexWebview, "customEvent", { name: "ArH", project: "MogoH5+" });
+    },
     formatPrice() {
       return "¥" + (this.goods.price / 100).toFixed(2);
     },
