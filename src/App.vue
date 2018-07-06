@@ -120,7 +120,7 @@ export default {
     openVux() {
       openWebview(
         {
-          url: "./vux/index.html",
+          url: "./vux.index.html",
           id: "vux.index"
         },
         {
@@ -131,7 +131,7 @@ export default {
     openMui() {
       openWebview(
         {
-          url: "./mui/index.html",
+          url: "./mui.index.html",
           id: "mui.index"
         },
         {
@@ -163,7 +163,7 @@ export default {
     plusMap() {
       openWebview(
         {
-          url: "./map/map.html",
+          url: "./map.map.html",
           id: "map.map"
         },
         {
@@ -208,7 +208,7 @@ export default {
     },
     openGoodsDetail() {
       openWebview({
-        url: "./goods/detail.html",
+        url: "./goods.detail.html",
         id: "goods.detail"
       });
     }

@@ -1,5 +1,7 @@
 <template>
   <div>
+          <img width="60%" :src="img" alt="">
+
     <br>
     <h4 style="text-align:center">Mui</h4>
     <p style="text-align:center;padding:10px 20px">这里主要演示MUI的一些样式和JS,我仍然推荐您使用其他vueUI(Vux,Vant,mint)来代替mui</p>
@@ -34,19 +36,23 @@
 </template>
 
 <script>
-
 export default {
+  data() {
+    return {
+      img: require("@/assets/logo.png")
+    };
+  },
   methods: {
-    alert () {
-      mui.alert('Mogo H5+')
+    alert() {
+      mui.alert("Mogo H5+");
     },
-    toast () {
-      mui.toast('嘿嘿,有问题issue哦')
+    toast() {
+      mui.toast("嘿嘿,有问题issue哦");
     }
   }
-}
+};
 </script>
 
 <style lang="less">
-@import '../../assets/mui/mui.css';
+@import "../../assets/mui/mui.css";
 </style>
