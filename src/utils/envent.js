@@ -4,7 +4,7 @@
  * @param {*} eventType
  * @param {*} data
  */
-exports.fire = function(webview, eventType, data) {
+export const fire = function(webview, eventType, data) {
   if (webview) {
     if (typeof data === "undefined") {
       data = "";

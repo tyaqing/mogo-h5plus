@@ -1,6 +1,6 @@
 import Vue from "vue";
+import "@/utils/common";
 import App from "./index.vue";
-import '@/utils/common'
 
 new Vue({
   el: "#app",

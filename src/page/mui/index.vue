@@ -1,6 +1,10 @@
 <template>
   <div>
-          <img width="60%" :src="img" alt="">
+    <br><br>
+    <center>
+      <img width="60%" :src="img" alt="">
+    </center>
+         
 
     <br>
     <h4 style="text-align:center">Mui</h4>

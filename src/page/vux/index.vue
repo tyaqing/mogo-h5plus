@@ -1,117 +1,171 @@
 <template>
   <div>
-    <br>
-    <br>
-    <br>
-    <group>
-      <calendar :readonly="readonly" v-model="demo1" :title="$t('Basic Usage')" disable-past placeholder="placeholder" @on-show="log('show')" @on-hide="log('hide')"></calendar>
-    </group>
-
-    <div style="padding:15px;">
-      <x-button type="primary" @click.native="readonly = !readonly">{{ $t('Toggle readonly') }}</x-button>
-    </div>
-
-    <group>
-      <calendar v-model="demo2" :title="$t('Set value as TODAY')" disable-past></calendar>
-    </group>
-
-    <group>
-      <calendar @on-change="onChange" v-model="demo3" :title="$t('Disable future')" disable-future></calendar>
-    </group>
-
-    <group>
-      <calendar @on-change="onChange" v-model="demo4" :title="$t('Show popup header')" show-popup-header :popup-header-title="$t('Please select')" disable-future></calendar>
-    </group>
-
-    <group>
-      <calendar placeholder="placeholder" @on-change="onChange" v-model="demo5" :title="$t('Multiple dates')" :popup-header-title="$t('Please select')" disable-future></calendar>
-    </group>
-
-    <group>
-      <calendar disable-weekend :display-format="displayFormat" :placeholder="$t('Please select')" @on-change="onChange" v-model="demo6" :title="$t('Format multiple dates')" :popup-header-title="$t('please select')"></calendar>
-      <cell-box align-items="flex-start">
-        <span class="selected-days">value:</span>
-        <div>
-          <badge v-for="day in demo6" :text="day" :key="day" style="margin-right:10px;"></badge>
-        </div>
-      </cell-box>
-    </group>
-    <div style="padding:15px;">
-      <x-button type="primary" @click.native="demo6 = []">{{ $t('Empty value') }}</x-button>
-    </div>
+    <group-title>THX to: https://github.com/wechatui/swiper</group-title>
+    <group-title>list模式下，默认高度为180px, 如果设置aspect-ratio会根据宽度自动计算高度</group-title>
+    <swiper :list="demo01_list" v-model="demo01_index" @on-index-change="demo01_onIndexChange"></swiper>
+    <p class="copyright">Image Source: http://www.gratisography.com/</p>
+    <p>current index: {{demo01_index}}</p>
+    <x-button @click.native="demo01_index = 0">go to 0</x-button>
+    <x-button @click.native="demo01_index = 1">go to 1</x-button>
+    <x-button @click.native="demo01_index = 2">go to 2</x-button>
+    <br/>
+    <br/>
+   
   </div>
 </template>
 
-<i18n>
-Basic Usage:
-  zh-CN: 一般使用
-Set value as TODAY:
-  zh-CN: 设置时间为今天
-Disable future:
-  zh-CN: 禁止选择未来时间
-Show popup header:
-  zh-CN: 显示 popup 头部
-Please select:
-  zh-CN: 请选择日期
-Multiple dates:
-  zh-CN: 多选
-Format multiple dates:
-  zh-CN: 格式化表单值
-Empty value:
-  zh-CN: 清空值
-Toggle readonly:
-  zh-CN: 切换 readonly
-</i18n>
-
 <script>
-import { Group, Calendar, Cell, Badge, CellBox, XButton } from "vux";
+import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from "vux";
+
+const baseList = [
+  {
+    url: "javascript:",
+    img: "https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg",
+    title: "送你一朵fua"
+  },
+  {
+    url: "javascript:",
+    img: "https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg",
+    title: "送你一辆车"
+  },
+  {
+    url: "javascript:",
+    img: "https://static.vux.li/demo/5.jpg", // 404
+    title: "送你一次旅行",
+    fallbackImg:
+      "https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg"
+  }
+];
+
+const imgList = [
+  "http://placeholder.qiniudn.com/800x300/FF3B3B/ffffff",
+  "http://placeholder.qiniudn.com/800x300/FFEF7D/ffffff",
+  "http://placeholder.qiniudn.com/800x300/8AEEB1/ffffff"
+];
+
+const urlList = baseList.map((item, index) => ({
+  url: "http://m.baidu.com",
+  img: item.img,
+  fallbackImg: item.fallbackImg,
+  title: `(可点击)${item.title}`
+}));
+
+const demoList = imgList.map((one, index) => ({
+  url: "javascript:",
+  img: one
+}));
+
+const only2ClickList = baseList.slice(0, 2).map(item => {
+  item.url = "http://m.baidu.com";
+  return item;
+});
+
+function b() {
+  return {
+    a: 1,
+    c: 2
+  };
+}
+
+// 解构
+let s = { ...b() };
+console.log("解构测试");
+console.log(s);
 
 export default {
   components: {
-    Calendar,
-    Group,
-    Cell,
-    Badge,
-    CellBox,
-    XButton
+    Swiper,
+    SwiperItem,
+    GroupTitle,
+    XButton,
+    Divider
+  },
+  ready() {},
+  methods: {
+    onSwiperItemIndexChange(index) {
+      console.log("demo item change", index);
+    },
+    demo01_onIndexChange(index) {
+      this.demo01_index = index;
+    },
+    demo05_onIndexChange(index) {
+      this.demo05_index = index;
+    },
+    demo05_onLoad(id) {
+      this.demo05_list = id === 1 ? baseList : demoList;
+    },
+    demo06_onIndexChange(index) {
+      this.demo06_index = index;
+    },
+    demo07_onIndexChange(index) {
+      this.demo07_index = index;
+    }
   },
   data() {
     return {
-      readonly: false,
-      demo1: "",
-      demo2: "TODAY",
-      demo3: "TODAY",
-      demo4: "TODAY",
-      demo5: [],
-      demo6: [],
-      displayFormat(value, type) {
-        if (type === "string") {
-          return value;
-        } else {
-          return value.length ? value.length + " days" : "";
-        }
-      }
+      demo01_list: baseList,
+      demo01_index: 1,
+      swiperItemIndex: 1
     };
-  },
-  methods: {
-    log(str) {
-      console.log(str);
-    },
-    onChange(val) {
-      console.log("on change", val);
-    },
-    $t(str) {
-      return str;
-    }
   }
 };
 </script>
 
-<style lang="less" >
-@import "~vux/src/styles/reset.less";
-
-.selected-days {
-  color: #999;
-  width: 90px;
+<style scoped>
+.copyright {
+  font-size: 12px;
+  color: #ccc;
+  text-align: center;
+}
+.text-scroll {
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+.text-scroll p {
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+}
+.black {
+  background-color: #000;
+}
+.title {
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+.vux-indicator.custom-bottom {
+  bottom: 30px;
+}
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+.swiper-demo-img img {
+  width: 100%;
 }
 </style>

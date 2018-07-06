@@ -9,22 +9,28 @@ function generateByConfig() {
 // 生成extraEntry
 const extraEntry = generateByConfig();
 
+let newExtraEntry = {};
+
 // 生成HtmlWebpackPlugin
 let extraHtmlWebpackPlugins = [];
 for (let i in extraEntry) {
-  const useMui = /\S+\|mui$/.test(i);
-  const chunk = useMui ? i.replace("|mui", "") : i;
+  // 配置是否使用mui plusready
+  const useMui = /\S+\|mui/.test(i);
+  const usePlusReady = /\S+\|plusReady/.test(i);
+  let chunk = useMui ? i.replace("|mui", "") : i;
+  if (usePlusReady) chunk = chunk.replace("|plusReady", "");
+  newExtraEntry[chunk] = extraEntry[i];
   extraHtmlWebpackPlugins.push(
     new HtmlWebpackPlugin({
       filename: chunk + ".html",
       template: "index.html",
       chunks: [chunk],
       muiScriptString: useMui ? require("./mui-loader") : "",
-      plusReady: '<script src="html5plus://ready"></script>'
+      plusReady: usePlusReady ? '<script src="html5plus://ready"></script>' : ""
       // 获取mui的script
     })
   );
 }
 
-exports.extraEntry = extraEntry;
+exports.extraEntry = newExtraEntry;
 exports.extraHtmlWebpackPlugins = extraHtmlWebpackPlugins;

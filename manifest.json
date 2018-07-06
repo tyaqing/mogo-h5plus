@@ -3,14 +3,14 @@
     "id": "com.femirror.mogoh5",/*应用的标识，创建应用时自动生成，勿手动修改*/
     "name": "MogoH5+",/*应用名称，程序桌面图标名称*/
     "version": {
-        "name": "1.0.0",/*应用版本名称*/
-        "code": "100"
+        "name": "1.1.0",/*应用版本名称*/
+        "code": "110"
     },
     "description": "MogoH5+",/*应用描述信息*/
     "icons": {
         "72": "icon.png"
     },
-    "launch_path": "http://192.168.199.154:8080/",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "launch_path": "http://192.168.199.154:8080",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
     "developer": {
         "name": "",/*开发者名称*/
         "email": "",/*开发者邮箱地址*/

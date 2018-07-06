@@ -3,8 +3,8 @@
  * 可以用于全局添加某功能
  */
 import FastClick from "fastclick";
-const VConsole = require("vconsole/dist/vconsole.min.js");
-
+import VConsole from "vconsole/dist/vconsole.min.js";
+new VConsole();
 // 去除300ms延迟
 document.addEventListener(
   "DOMContentLoaded",
@@ -15,4 +15,3 @@ document.addEventListener(
 );
 
 // 页面调试工具
-const vConsole = new VConsole();

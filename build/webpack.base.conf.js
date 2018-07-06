@@ -33,7 +33,7 @@ for (let p in devServer.proxy) {
   Defines[devServer.proxy[p].name] = JSON.stringify(p);
   // devServer.proxy[p].name;
 }
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
   for (let p in devServer.proxy) {
     Defines[devServer.proxy[p].name] = JSON.stringify(

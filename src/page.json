@@ -1,6 +1,5 @@
 {
   "goods.detail": "./src/page/goods/detail.js",
-  "map.map": "./src/page/map/map.js",
   "mui.index|mui|plusReady": "./src/page/mui/index.js",
   "user.index": "./src/page/user/index.js",
   "vux.index": "./src/page/vux/index.js"

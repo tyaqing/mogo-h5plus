@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './detail.vue'
-import '@/utils/common'
+import Vue from "vue";
+import "@/utils/common";
+import App from "./detail.vue";
 
 new Vue({
-  el: '#app',
+  el: "#app",
   render: h => h(App)
-})
+});
