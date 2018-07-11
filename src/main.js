@@ -3,7 +3,7 @@
 import Vue from "vue";
 import "./utils/common";
 import App from "./App";
-// import './assets/mui/mui.min'
+import "./utils/update";
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
