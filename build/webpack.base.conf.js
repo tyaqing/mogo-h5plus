@@ -46,7 +46,6 @@ if (process.env.NODE_ENV === "production") {
 const webpackConfig = {
   context: path.resolve(__dirname, "../"),
   entry: {
-    app: "./src/main.js",
     ...extraEntry
   },
   output: {
