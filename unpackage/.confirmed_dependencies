@@ -2,7 +2,8 @@
   "dist/index.html": {
     "refer": [
       "dist/goods.detail.html",
-      "dist/mui.index.html"
+      "dist/mui.index.html",
+      "dist/vux.index.html"
     ],
     "resources": []
   }

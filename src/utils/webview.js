@@ -15,6 +15,7 @@ export function openWebview(config, style = {}, extras = {}) {
       titleNView: {
         // 详情页原生导航配置
         backgroundColor: "#f7f7f7", // 导航栏背景色
+        titleText: config.title, // 导航栏标题
         titleColor: "#000000", // 文字颜色
         type: "transparent", // 透明渐变样式
         autoBackButton: true, // 自动绘制返回箭头
@@ -41,7 +42,7 @@ export function openWebview(config, style = {}, extras = {}) {
 }
 
 // webview.open  打开得很快 但是不能传参
-export function openWebviewFast(url, id) {
+export function openWebviewFast(url, id, title) {
   plus.nativeUI.showWaiting("加载中");
   plus.webview.open(
     url,
@@ -49,7 +50,7 @@ export function openWebviewFast(url, id) {
     {
       titleNView: {
         backgroundColor: "#f7f7f7", // 导航栏背景色
-        // titleText: config.title, // 导航栏标题
+        titleText: title, // 导航栏标题
         titleColor: "#666", // 文字颜色
         // type: "transparent", // 透明渐变样式
         autoBackButton: true, // 自动绘制返回箭头
@@ -86,7 +87,7 @@ export function preLoad(webviews = []) {
         titleNView: {
           // 详情页原生导航配置
           backgroundColor: "#f7f7f7", // 导航栏背景色
-          // titleText: config.title, // 导航栏标题
+          titleText: webview.title, // 导航栏标题
           titleColor: "#000000", // 文字颜色
           type: "transparent", // 透明渐变样式
           autoBackButton: true, // 自动绘制返回箭头

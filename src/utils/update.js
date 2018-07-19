@@ -1,3 +1,5 @@
+// 暂时自己研究哦 之后的版本会出案例
+
 // 更新资源
 var wgtVer = null;
 function plusReady() {
@@ -14,7 +16,7 @@ if (window.plus) {
   document.addEventListener("plusready", plusReady, false);
 }
 // 检测更新
-var checkUrl = "http://app.vipmall.net/app_update/ios.php";
+var checkUrl = "";
 function checkUpdate() {
   console.log("检测更新");
   //plus.nativeUI.showWaiting("检测更新...");
@@ -55,8 +57,7 @@ document.addEventListener(
 );
 
 // 下载wgt文件
-var wgtUrl =
-  "http://pan.mogo.club/index.php?share/fileDownload&user=1&sid=ch28ibN5";
+var wgtUrl = "";
 function downWgt() {
   plus.nativeUI.showWaiting("下载wgt文件...");
   plus.downloader

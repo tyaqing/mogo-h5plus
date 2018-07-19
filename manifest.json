@@ -210,7 +210,8 @@
 				"refer": [
 					"dist/user/index.html",
 					"dist/goods.detail.html",
-					"dist/mui.index.html"
+					"dist/mui.index.html",
+					"dist/vux.index.html"
 				],
 				"priority": 0
 			}
