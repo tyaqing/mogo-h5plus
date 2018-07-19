@@ -1,7 +1,7 @@
 {
-  "index": "./src/main.js",
+  "index|plusReady": "./src/main.js",
   "goods.detail": "./src/page/goods/detail.js",
   "mui.index|mui|plusReady": "./src/page/mui/index.js",
   "user.index": "./src/page/user/index.js",
-  "vux.index": "./src/page/vux/index.js"
+  "vux.index|plusReady": "./src/page/vux/index.js"
 }

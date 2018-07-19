@@ -22,6 +22,52 @@
 
 ## 更新记录
 
+### 1.2.0 [20180719]
+
+#### [新增]
+
+- 增加预加载窗口打开方式,根据不同场景使用不同的打开方式,可以大大提高 webview 的打开速度
+- 由于 VConsole 并不能解决全部调试问题,增加一个`print`方法,用于在 Hbuilder 上打印对象
+
+#### [速度优化方案]
+
+最近许多反映脚手架很慢的可以参考一下优化方案,可以大大提高调试/打包速度.
+
+由于 demo 需要展示各种 ui,加载了各种的 ui 的 loader,所以如果开发者用不到可以将其移除.
+
+##### 1.如果不使用 VUX
+
+注释掉 vux-loader 即可,在`webpack.base.conf.js`中,修改以下代码
+
+```
+const vuxLoader = require("vux-loader");
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ["vux-ui"]
+});
+```
+
+修改后
+
+```
+module.exports = webpackConfig;
+```
+
+##### 2.如果不使用 vant
+
+移除掉`.babalrc`中以下代码
+
+```
+    [
+      "import",
+      {
+        "libraryName": "vant",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
+```
+
 ### 1.1.0 [20180706]
 
 #### [新增]

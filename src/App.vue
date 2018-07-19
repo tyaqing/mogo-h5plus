@@ -53,7 +53,12 @@
 </template>
 <script>
 import Vue from "vue";
-import { openWebview } from "@/utils/webview";
+import {
+  openWebview,
+  openWebviewFast,
+  preLoad,
+  showWebviewById
+} from "@/utils/webview";
 import { request } from "@/utils/request";
 import {
   Dialog,
@@ -103,6 +108,9 @@ export default {
     } else {
       document.addEventListener("plusready", plusReady, false);
     }
+
+    // 预加载一些窗口
+    preLoad([{ url: "./vux.index.html", id: "vux.index" }]);
   },
   data() {
     return {
@@ -133,38 +141,10 @@ export default {
 
   methods: {
     openVux() {
-      openWebview(
-        {
-          url: "./vux.index.html",
-          id: "vux.index"
-        },
-        {
-          bounce: "none",
-          titleNView: {
-            titleText: "Vux幻灯片", // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
-            titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
-            titleSize: "17px", // 字体大小,默认17px
-            backgroundColor: "#fff", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
-            autoBackButton: true,
-            splitLine: {
-              // 标题栏控件的底部分割线，类似borderBottom
-              color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"
-              height: "1px" // 分割线高度,默认值为"2px"
-            }
-          }
-        }
-      );
+      showWebviewById("vux.index");
     },
     openMui() {
-      openWebview(
-        {
-          url: "./mui.index.html",
-          id: "mui.index"
-        },
-        {
-          bounce: "none"
-        }
-      );
+      openWebviewFast("./mui.index.html", "mui.index");
     },
     camera() {
       var cmr = plus.camera.getCamera();
