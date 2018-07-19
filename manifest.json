@@ -3,7 +3,7 @@
     "id": "com.femirror.mogoh5",/*应用的标识，创建应用时自动生成，勿手动修改*/
     "name": "MogoH5+",/*应用名称，程序桌面图标名称*/
     "version": {
-        "name": "1.1.0",/*应用版本名称*/
+        "name": "1.2.0",/*应用版本名称*/
         "code": "110"
     },
     "description": "MogoH5+",/*应用描述信息*/
@@ -210,7 +210,9 @@
 				"refer": [
 					"dist/user/index.html",
 					"dist/goods.detail.html",
-					"dist/mui.index.html"
+					"dist/mui.index.html",
+					"dist/vux.index.html",
+					"dist/goods.cart.html"
 				],
 				"priority": 0
 			}

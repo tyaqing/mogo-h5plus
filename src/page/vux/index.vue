@@ -80,7 +80,9 @@ export default {
     XButton,
     Divider
   },
-  ready() {},
+  created() {
+    console.log(plus.webview.currentWebview());
+  },
   methods: {
     onSwiperItemIndexChange(index) {
       console.log("demo item change", index);

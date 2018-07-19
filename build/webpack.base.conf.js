@@ -1,6 +1,5 @@
 "use strict";
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const utils = require("./utils");
 const config = require("../config");
@@ -46,7 +45,6 @@ if (process.env.NODE_ENV === "production") {
 const webpackConfig = {
   context: path.resolve(__dirname, "../"),
   entry: {
-    app: "./src/main.js",
     ...extraEntry
   },
   output: {
@@ -87,7 +85,7 @@ const webpackConfig = {
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("img/[name].[hash:7].[ext]")
+          name: utils.assetsPath("img/[name].[ext]")
         }
       },
       {
@@ -95,7 +93,7 @@ const webpackConfig = {
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("media/[name].[hash:7].[ext]")
+          name: utils.assetsPath("media/[name].[ext]")
         }
       },
       {
@@ -103,7 +101,7 @@ const webpackConfig = {
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("fonts/[name].[hash:7].[ext]")
+          name: utils.assetsPath("fonts/[name].[ext]")
         }
       }
     ]
@@ -122,6 +120,7 @@ const webpackConfig = {
   },
   plugins: [...extraHtmlWebpackPlugins, new webpack.DefinePlugin(Defines)]
 };
+
 const vuxLoader = require("vux-loader");
 
 module.exports = vuxLoader.merge(webpackConfig, {

@@ -11,9 +11,9 @@
       <van-collapse v-model="activeName" accordion>
         <van-collapse-item title="plus演示" name="1">
           <van-cell-group>
-            <van-cell @click="openGoodsDetail()" title="打开商品详情窗口" is-link />
+            <van-cell @click="openGoodsDetail()" title="预加载商品详情窗口" is-link />
+            <van-cell @click="openCart()" title="打开购物车窗口" is-link />
             <van-cell @click="camera" title="拍照" is-link />
-            <!-- <van-cell @click="plusMap" title="打开地图" is-link /> -->
             <van-cell @click="toast" title="原生Toast" is-link />
           </van-cell-group>
         </van-collapse-item>
@@ -53,7 +53,12 @@
 </template>
 <script>
 import Vue from "vue";
-import { openWebview } from "@/utils/webview";
+import {
+  openWebview,
+  openWebviewFast,
+  preLoad,
+  showWebviewById
+} from "@/utils/webview";
 import { request } from "@/utils/request";
 import {
   Dialog,
@@ -103,6 +108,24 @@ export default {
     } else {
       document.addEventListener("plusready", plusReady, false);
     }
+
+    // 预加载一些窗口
+    preLoad([
+      {
+        url: "./vux.index.html",
+        id: "vux.index",
+        title: "vux演示页"
+      },
+      {
+        url: "./goods.detail.html",
+        id: "goods.detail",
+        title: "超级红苹果",
+        extras: {
+          id: 2018,
+          name: "超级红苹果"
+        }
+      }
+    ]);
   },
   data() {
     return {
@@ -132,39 +155,41 @@ export default {
   },
 
   methods: {
+    // 使用预加载速度会很快,但是没法再次传值,只能通过页面之间的通讯完成传值,参考goods.detail页面中的fire
+    openGoodsDetail() {
+      showWebviewById("goods.detail");
+    },
     openVux() {
+      showWebviewById("vux.index");
+    },
+    openCart() {
+      // 重写了标题样式
       openWebview(
         {
-          url: "./vux.index.html",
-          id: "vux.index"
+          url: "./goods.cart.html",
+          id: "goods.cart"
         },
         {
-          bounce: "none",
           titleNView: {
-            titleText: "Vux幻灯片", // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
-            titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
-            titleSize: "17px", // 字体大小,默认17px
-            backgroundColor: "#fff", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
-            autoBackButton: true,
+            backgroundColor: "#f7f7f7", // 导航栏背景色
+            titleText: "购物车", // 导航栏标题
+            titleColor: "#666", // 文字颜色
+            // type: "transparent", // 透明渐变样式
+            autoBackButton: true, // 自动绘制返回箭头
             splitLine: {
-              // 标题栏控件的底部分割线，类似borderBottom
-              color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"
-              height: "1px" // 分割线高度,默认值为"2px"
+              // 底部分割线
+              color: "#cccccc"
             }
           }
+        },
+        {
+          id: 2018,
+          name: "超级红苹果"
         }
       );
     },
     openMui() {
-      openWebview(
-        {
-          url: "./mui.index.html",
-          id: "mui.index"
-        },
-        {
-          bounce: "none"
-        }
-      );
+      openWebviewFast("./mui.index.html", "mui.index", "Mui演示");
     },
     camera() {
       var cmr = plus.camera.getCamera();
@@ -201,9 +226,7 @@ export default {
     toast() {
       plus.nativeUI.toast("Hier");
     },
-    alert() {
-      plus.nativeUI.alert("Hier");
-    },
+
     onRefresh() {
       this.isLoading = true;
       request({
@@ -221,19 +244,6 @@ export default {
     },
     openAS() {
       this.show = !this.show;
-    },
-    openGoodsDetail() {
-      openWebview(
-        {
-          url: "./goods.detail.html",
-          id: "goods.detail"
-        },
-        null,
-        {
-          id: 2018,
-          name: "超级红苹果"
-        }
-      );
     }
   }
 };
