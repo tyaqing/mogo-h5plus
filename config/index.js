@@ -16,6 +16,13 @@ module.exports = {
         pathRewrite: { "^/api": "" },
         changeOrigin: true,
         secure: false
+      },
+      "/localApi": {
+        name: "LOCALAPI",
+        target: "http://127.0.0.1:7001",
+        pathRewrite: { "^/localApi": "" },
+        changeOrigin: true,
+        secure: false
       }
     },
 
