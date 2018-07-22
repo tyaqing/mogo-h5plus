@@ -6,7 +6,7 @@
 
       <Logo></Logo>
       <div style="padding:10px 15px;text-align:center">
-        <small>下拉Ajax请求试试😋</small>
+        <small>下拉Ajax请求试试😋</small> 
       </div>
       <van-collapse v-model="activeName" accordion>
         <van-collapse-item title="plus演示" name="1">

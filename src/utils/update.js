@@ -9,6 +9,7 @@ document.addEventListener(
     plus.runtime.getProperty(plus.runtime.appid, function(inf) {
       console.log(inf);
     });
+
     console.log("isIos", isIos());
     console.log("isAndroid", isAndroid());
     console.log(plus.runtime.version);

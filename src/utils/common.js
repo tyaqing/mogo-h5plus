@@ -3,8 +3,6 @@
  * 可以用于全局添加某功能
  */
 import FastClick from "fastclick";
-import VConsole from "vconsole/dist/vconsole.min.js";
-new VConsole();
 // 去除300ms延迟
 document.addEventListener(
   "DOMContentLoaded",
