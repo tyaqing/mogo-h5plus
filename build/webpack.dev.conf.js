@@ -56,7 +56,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     new vConsolePlugin({
-      filter: [], // 需要过滤的入口文件
       enable: true // 发布代码前记得改回 false
     })
     // https://github.com/ampedandwired/html-webpack-plugin

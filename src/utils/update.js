@@ -1,33 +1,48 @@
 import { request } from "./request";
 import { isIos, isAndroid } from "./tools";
+import { getProperty } from "./plus/runtime";
+import { confirm } from "./plus/nativeUI";
 // 暂时自己研究哦 之后的版本会出案例
 
-// 检测更新
-document.addEventListener(
-  "plusready",
-  function() {
-    plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-      console.log(inf);
-    });
-
-    console.log("isIos", isIos());
-    console.log("isAndroid", isAndroid());
-    console.log(plus.runtime.version);
-    // 扩展API加载完毕，现在可以正常调用扩展API
-
-    request({
+let newVersion, localVersion, downloadUrl;
+getProperty()
+  .then(inf => {
+    localVersion = inf.version; //当前版本
+    // 获取版本信息
+    return request({
       url:
         LOCALAPI +
-        "/public/app/checkUpdate?appId=d1610a55-82dd-4d31-84e4-2fcfbff0e1be"
-    }).then(resp => {
-      console.log(resp.data);
-      console.log("检测更新");
+        "/public/app/checkUpdate?appId=3428b97b-4f27-4779-98e6-8ee26ebbd95f"
     });
-    // checkUpdate();
-    // downWgt();
-  },
-  false
-);
+  })
+  .then(resp => {
+    // 查看最新版本信息
+    const { data } = resp;
+
+    if (isAndroid()) {
+      newVersion = data.Android.version;
+      downloadUrl = data.Android.url;
+    } else if (isIos()) {
+      newVersion = data.iOS.version;
+      downloadUrl = data.iOS.version;
+    } else {
+      throw "版本错误";
+    }
+
+    if (newVersion === localVersion) return;
+    console.log(newVersion > localVersion);
+
+    // 询问是否升级
+    return confirm(data.Android.note, data.Android.title);
+  })
+  .then(() => {
+    downWgt(downloadUrl);
+  });
+
+function checkVersion(localVersion) {
+  if (isAndroid()) {
+  }
+}
 
 // 下载wgt文件
 function downWgt(url) {
