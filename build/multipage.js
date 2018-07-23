@@ -24,6 +24,7 @@ for (let i in extraEntry) {
     new HtmlWebpackPlugin({
       filename: chunk + ".html",
       template: "index.html",
+      multihtmlCache: true,
       chunks: [chunk],
       muiScriptString: useMui ? require("./mui-loader") : "",
       plusReady: usePlusReady ? '<script src="html5plus://ready"></script>' : ""
