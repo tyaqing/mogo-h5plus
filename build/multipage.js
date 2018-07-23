@@ -1,5 +1,5 @@
 const fs = require("fs");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin-for-multihtml");
 
 // 通过页面配置文件过去页面json
 function generateByConfig() {
