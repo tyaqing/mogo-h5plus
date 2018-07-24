@@ -118,8 +118,8 @@ export default {
     },
     onClickCart() {
       // this.$router.push("cart");
-      const indexWebview = plus.webview.getWebviewById("goods.cart");
-      fire(indexWebview, "customEvent", { name: "ArH", project: "MogoH5+" });
+      const cartWebview = plus.webview.getWebviewById("goods.cart");
+      fire(cartWebview, "addGoodsToCart", { goods_id: 3, num: 1 });
     },
     sorry() {
       Toast("暂无后续逻辑~");

@@ -48,7 +48,7 @@ export default {
           if (e.index === 0) {
             plus.nativeUI.toast("离开了");
             const ws = plus.webview.currentWebview();
-            ws.close();
+            ws.hide();
           } else {
             plus.nativeUI.toast("留住了");
           }
@@ -56,6 +56,16 @@ export default {
       },
       false
     );
+    window.addEventListener("addGoodsToCart", event => {
+      //通过event.detail可获得传递过来的参数内容
+
+      let goods = this.goods.find(ele => {
+        return ele.id == event.detail.goods_id;
+      });
+      goods.num++;
+      plus.nativeUI.toast(`我是购物车页面,当前苹果数量为${goods.num}`);
+      console.log(event.detail);
+    });
   },
   data() {
     return {

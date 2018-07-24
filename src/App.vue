@@ -119,10 +119,28 @@ export default {
       {
         url: "./goods.detail.html",
         id: "goods.detail",
-        title: "超级红苹果",
+        title: "美国伽力果",
         extras: {
           id: 2018,
           name: "超级红苹果"
+        }
+      },
+      {
+        url: "./goods.cart.html",
+        id: "goods.cart",
+        title: "购物车",
+        style: {
+          titleNView: {
+            backgroundColor: "#f7f7f7", // 导航栏背景色
+            titleText: "购物车", // 导航栏标题
+            titleColor: "#666", // 文字颜色
+            // type: "transparent", // 透明渐变样式
+            autoBackButton: true, // 自动绘制返回箭头
+            splitLine: {
+              // 底部分割线
+              color: "#cccccc"
+            }
+          }
         }
       }
     ]);
@@ -163,30 +181,31 @@ export default {
       showWebviewById("vux.index");
     },
     openCart() {
+      showWebviewById("goods.cart");
       // 重写了标题样式
-      openWebview(
-        {
-          url: "./goods.cart.html",
-          id: "goods.cart"
-        },
-        {
-          titleNView: {
-            backgroundColor: "#f7f7f7", // 导航栏背景色
-            titleText: "购物车", // 导航栏标题
-            titleColor: "#666", // 文字颜色
-            // type: "transparent", // 透明渐变样式
-            autoBackButton: true, // 自动绘制返回箭头
-            splitLine: {
-              // 底部分割线
-              color: "#cccccc"
-            }
-          }
-        },
-        {
-          id: 2018,
-          name: "超级红苹果"
-        }
-      );
+      // openWebview(
+      //   {
+      //     url: "./goods.cart.html",
+      //     id: "goods.cart"
+      //   },
+      //   {
+      //     titleNView: {
+      //       backgroundColor: "#f7f7f7", // 导航栏背景色
+      //       titleText: "购物车", // 导航栏标题
+      //       titleColor: "#666", // 文字颜色
+      //       // type: "transparent", // 透明渐变样式
+      //       autoBackButton: true, // 自动绘制返回箭头
+      //       splitLine: {
+      //         // 底部分割线
+      //         color: "#cccccc"
+      //       }
+      //     }
+      //   },
+      //   {
+      //     id: 2018,
+      //     name: "超级红苹果"
+      //   }
+      // );
     },
     openMui() {
       openWebviewFast("./mui.index.html", "mui.index", "Mui演示");
