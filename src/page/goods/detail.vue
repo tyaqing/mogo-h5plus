@@ -61,7 +61,7 @@ import {
   SwipeItem,
   GoodsAction,
   GoodsActionBigBtn,
-  GoodsActionMiniBtn
+  GoodsActionMiniBtn 
 } from "vant";
 
 import { fire } from "../../utils/envent.js";
