@@ -8,41 +8,43 @@ let newVersion, localVersion, downloadUrl;
 getProperty()
   .then(inf => {
     localVersion = inf.version; //当前版本
+    console.log(inf);
     // 获取版本信息
     return request({
       url:
         LOCALAPI +
-        "/public/app/checkUpdate?appId=3428b97b-4f27-4779-98e6-8ee26ebbd95f"
+        "/public/app/checkUpdate?appId=9a4f8e06-6e55-4fb5-bcae-d0b7d605dfc6"
     });
   })
   .then(resp => {
     // 查看最新版本信息
     const { data } = resp;
 
+    console.log(data);
     if (isAndroid()) {
-      newVersion = data.Android.version;
-      downloadUrl = data.Android.url;
     } else if (isIos()) {
-      newVersion = data.iOS.version;
-      downloadUrl = data.iOS.version;
     } else {
       throw "版本错误";
     }
+    newVersion = data.name;
+    // 如果版本相等
+    if (!compareVersion(newVersion, localVersion)) return;
+    console.log(newVersion, localVersion);
+    console.log(compareVersion(newVersion, localVersion));
+    // 处理静默更新/提示更新
 
-    if (newVersion === localVersion) return;
-    console.log(newVersion > localVersion);
-
-    // 询问是否升级
-    return confirm(data.Android.note, data.Android.title);
+    downloadUrl = data.android_url;
+    if (data.hotupdate_type === "silence") {
+      downWgt(downloadUrl);
+      return false;
+    }
+    return confirm(data.description, data.title);
   })
-  .then(() => {
-    downWgt(downloadUrl);
+  .then(selected => {
+    if (selected.index === 0) {
+      downWgt(downloadUrl);
+    }
   });
-
-function checkVersion(localVersion) {
-  if (isAndroid()) {
-  }
-}
 
 // 下载wgt文件
 function downWgt(url) {
@@ -79,4 +81,30 @@ function installWgt(path) {
       plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
     }
   );
+}
+
+// 判断版本大小 1>=2 大于等于
+function compareVersion(curV, reqV) {
+  if (curV && reqV) {
+    //将两个版本号拆成数字
+    var arr1 = curV.split("."),
+      arr2 = reqV.split(".");
+    var minLength = Math.min(arr1.length, arr2.length),
+      position = 0,
+      diff = 0;
+    //依次比较版本号每一位大小，当对比得出结果后跳出循环（后文有简单介绍）
+    while (
+      position < minLength &&
+      (diff = parseInt(arr1[position]) - parseInt(arr2[position])) == 0
+    ) {
+      position++;
+    }
+    diff = diff != 0 ? diff : arr1.length - arr2.length;
+    //若curV大于reqV，则返回true
+    return diff > 0;
+  } else {
+    //输入为空
+    console.log("版本号不能为空");
+    return false;
+  }
 }
