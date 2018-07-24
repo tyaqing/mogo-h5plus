@@ -27,12 +27,35 @@
 
 <script>
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
+import { confirm } from "../../utils/plus/nativeUI";
 export default {
   components: {
     [Card.name]: Card,
     [Checkbox.name]: Checkbox,
     [SubmitBar.name]: SubmitBar,
     [CheckboxGroup.name]: CheckboxGroup
+  },
+  created() {
+    plus.key.removeEventListener("backbutton", function() {
+      console.log(5555);
+    });
+    plus.key.addEventListener(
+      "backbutton",
+      function() {
+        //  nativeUI.conf
+        // nativeUI.con
+        confirm("确认要离开么?").then(e => {
+          if (e.index === 0) {
+            plus.nativeUI.toast("离开了");
+            const ws = plus.webview.currentWebview();
+            ws.close();
+          } else {
+            plus.nativeUI.toast("留住了");
+          }
+        });
+      },
+      false
+    );
   },
   data() {
     return {
