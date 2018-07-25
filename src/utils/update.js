@@ -9,6 +9,7 @@ const appId = "9a4f8e06-6e55-4fb5-bcae-d0b7d605dfc6";
 let newVersion,
   localVersion,
   downloadUrl,
+  dataType,
   updateSilence = false;
 getProperty()
   .then(inf => {
@@ -24,6 +25,7 @@ getProperty()
     const { data } = resp;
 
     newVersion = data.name;
+    dataType = data.type;
     // 如果版本相等
     if (!compareVersion(newVersion, localVersion)) return;
     // console.log(newVersion, localVersion);
@@ -41,12 +43,11 @@ getProperty()
   })
   .then(selected => {
     if (selected.index === 0) {
-      // 如果是苹果系统,就直接跳转到指定应用商店
-      if (isIos()) {
+      // 如果是苹果系统 然后是安装包,就直接跳转到指定应用商店
+      if (isIos() && dataType === "apk") {
         plus.runtime.openURL(data.ios_url);
         return false;
       }
-
       downWgt(downloadUrl);
     }
   })
