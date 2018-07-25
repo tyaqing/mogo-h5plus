@@ -3,7 +3,8 @@
 import Vue from "vue";
 import "./utils/common";
 import App from "./App";
-import "./utils/update";
+import { checkUpdate } from "./utils/update";
+checkUpdate();
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
