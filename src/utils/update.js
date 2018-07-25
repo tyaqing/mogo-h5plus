@@ -36,12 +36,15 @@ export function checkUpdate() {
       downloadUrl = data.android_url;
 
       // 处理不同平台 如果只热更新安卓
-      if (isAndroid() != (data.platform === "android")) {
-        return false;
-      }
-      // 如果只热更新苹果
-      if (isIos() != (data.platform === "ios")) {
-        return false;
+
+      if (data.platform !== "both") {
+        if (isAndroid()) {
+          if (data.platform !== "android") return false;
+        }
+        // 如果只热更新苹果
+        if (isIos()) {
+          if (data.platform !== "ios") return false;
+        }
       }
 
       // 如果是apk安装,是没法静默更新的
