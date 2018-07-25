@@ -7,5 +7,10 @@
       "dist/goods.cart.html"
     ],
     "resources": []
+  },
+  "dist/vux.index.html": {
+    "resources": [
+      "dist/assets/css/vux.index.css"
+    ]
   }
 }

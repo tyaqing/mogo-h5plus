@@ -4,37 +4,36 @@ import { getProperty } from "./plus/runtime";
 import { confirm } from "./plus/nativeUI";
 // 暂时自己研究哦 之后的版本会出案例
 
-let newVersion, localVersion, downloadUrl;
+const appId = "9a4f8e06-6e55-4fb5-bcae-d0b7d605dfc6";
+
+let newVersion,
+  localVersion,
+  downloadUrl,
+  updateSilence = false;
 getProperty()
   .then(inf => {
     localVersion = inf.version; //当前版本
     console.log(inf);
     // 获取版本信息
     return request({
-      url:
-        LOCALAPI +
-        "/public/app/checkUpdate?appId=9a4f8e06-6e55-4fb5-bcae-d0b7d605dfc6"
+      url: FemirrorAPI + `/public/app/checkUpdate?appId=${appId}`
     });
   })
   .then(resp => {
     // 查看最新版本信息
     const { data } = resp;
 
-    console.log(data);
-    if (isAndroid()) {
-    } else if (isIos()) {
-    } else {
-      throw "版本错误";
-    }
     newVersion = data.name;
     // 如果版本相等
     if (!compareVersion(newVersion, localVersion)) return;
-    console.log(newVersion, localVersion);
-    console.log(compareVersion(newVersion, localVersion));
-    // 处理静默更新/提示更新
+    // console.log(newVersion, localVersion);
+    // console.log(compareVersion(newVersion, localVersion));
 
+    // 处理静默更新/提示更新
     downloadUrl = data.android_url;
-    if (data.hotupdate_type === "silence") {
+    // 如果是apk安装,是没法静默更新的
+    if (data.type !== "apk" && data.hotupdate_type === "silence") {
+      updateSilence = true;
       downWgt(downloadUrl);
       return false;
     }
@@ -42,13 +41,22 @@ getProperty()
   })
   .then(selected => {
     if (selected.index === 0) {
+      // 如果是苹果系统,就直接跳转到指定应用商店
+      if (isIos()) {
+        plus.runtime.openURL(data.ios_url);
+        return false;
+      }
+
       downWgt(downloadUrl);
     }
+  })
+  .catch(error => {
+    //即使错误也不做任何处理
   });
 
 // 下载wgt文件
 function downWgt(url) {
-  plus.nativeUI.showWaiting("下载wgt文件...");
+  !updateSilence && plus.nativeUI.showWaiting("下载更新文件...");
   plus.downloader
     .createDownload(url, { filename: "_doc/update/" }, function(d, status) {
       if (status == 200) {
@@ -56,29 +64,29 @@ function downWgt(url) {
         installWgt(d.filename); // 安装wgt包
       } else {
         console.log("下载wgt失败！");
-        plus.nativeUI.alert("下载wgt失败！");
+        !updateSilence && plus.nativeUI.alert("下载wgt失败！");
       }
-      plus.nativeUI.closeWaiting();
+      !updateSilence && plus.nativeUI.closeWaiting();
     })
     .start();
 }
 // 更新应用资源
 function installWgt(path) {
-  plus.nativeUI.showWaiting("安装wgt文件...");
+  !updateSilence && plus.nativeUI.showWaiting("安装wgt文件...");
   plus.runtime.install(
     path,
     {},
     function() {
-      plus.nativeUI.closeWaiting();
-      console.log("安装wgt文件成功！");
-      plus.nativeUI.alert("首页数据刷新！", function() {
-        plus.runtime.restart();
-      });
+      !updateSilence && plus.nativeUI.closeWaiting();
+      console.log("更新成功！");
+      plus.nativeUI.toast("更新完成");
+      plus.runtime.restart();
     },
     function(e) {
-      plus.nativeUI.closeWaiting();
+      !updateSilence && plus.nativeUI.closeWaiting();
       console.log("安装wgt文件失败[" + e.code + "]：" + e.message);
-      plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
+      !updateSilence &&
+        plus.nativeUI.alert("更新失败[" + e.code + "]：" + e.message);
     }
   );
 }

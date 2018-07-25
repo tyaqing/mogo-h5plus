@@ -23,6 +23,13 @@ module.exports = {
         pathRewrite: { "^/localApi": "" },
         changeOrigin: true,
         secure: false
+      },
+      "/femirror": {
+        name: "FemirrorAPI",
+        target: "https://www.femirror.com",
+        pathRewrite: { "^/femirror": "" },
+        changeOrigin: true,
+        secure: false
       }
     },
 
