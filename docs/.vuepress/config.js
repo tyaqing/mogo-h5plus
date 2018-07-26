@@ -5,26 +5,32 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "主页", link: "/" },
-      { text: "MogoH5+文档", link: "/guide.md" },
+      { text: "MogoH5+", link: "/guide.md" },
       { text: "H5+文档", link: "http://www.html5plus.org/doc/h5p.html" }
     ],
     repo: "tyaqing/mogo-h5plus",
     search: true,
     sidebar: [
       {
-        title: "指南",
+        title: "指南|Guide",
         collapsable: false,
         children: [
-          "introduction" /* / */,
-          "contact" /* /contact.html */,
-          "about" /* /about.html */
+          "guide/introduction",
+          "guide/development",
+          "guide/production",
+          "guide/update_log",
+          "guide/qa"
         ]
       },
       {
-        title: "热点",
-        children: [
-          /* ... */
-        ]
+        title: "最佳实践|Practice",
+        collapsable: false,
+        children: ["practice/webview", "practice/details"]
+      },
+      {
+        title: "热点|Hot",
+        collapsable: false,
+        children: ["hotfix"]
       }
     ]
   }
