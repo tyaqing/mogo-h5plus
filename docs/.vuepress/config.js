@@ -9,6 +9,23 @@ module.exports = {
       { text: "H5+文档", link: "http://www.html5plus.org/doc/h5p.html" }
     ],
     repo: "tyaqing/mogo-h5plus",
-    search: true
+    search: true,
+    sidebar: [
+      {
+        title: "指南",
+        collapsable: false,
+        children: [
+          "introduction" /* / */,
+          "contact" /* /contact.html */,
+          "about" /* /about.html */
+        ]
+      },
+      {
+        title: "热点",
+        children: [
+          /* ... */
+        ]
+      }
+    ]
   }
 };

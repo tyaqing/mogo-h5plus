@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 ![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
 
 # 简介
