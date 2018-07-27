@@ -97,8 +97,8 @@ function installWgt(path) {
     function() {
       !updateSilence && plus.nativeUI.closeWaiting();
       console.log("更新成功！");
-      plus.nativeUI.toast("更新完成");
-      plus.runtime.restart();
+      !updateSilence && plus.nativeUI.toast("更新完成");
+      !updateSilence && plus.runtime.restart();
     },
     function(e) {
       !updateSilence && plus.nativeUI.closeWaiting();
