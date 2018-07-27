@@ -92,3 +92,7 @@ checkUpdate();
 Femirror 是一个自动化更新平台,无需后端也可以完成 app 日常更新.目前正在测试中,将会很快公测.您还可以给他[赞助加速](../about.html#赞助)
 
 <img  :src="$withBase('/s0.png')" alt="foo">
+
+## 常见问题
+
+在调试热更新的时候必须使用自定义基座,否则得到的版本是 Hbuilder 的版本.
