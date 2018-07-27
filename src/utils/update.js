@@ -18,6 +18,7 @@ export function checkUpdate() {
   getProperty()
     .then(inf => {
       localVersion = inf.version; //当前版本      // 获取版本信息
+
       return request({
         url: updateUrl
       });
@@ -25,9 +26,11 @@ export function checkUpdate() {
     .then(resp => {
       // 查看最新版本信息
       const { data } = resp;
-
+      console.log(data);
       newVersion = data.name;
-      dataType = data.type;
+      console.log(2);
+      console.log(3);
+      console.log(newVersion, localVersion);
       // 如果版本相等
       if (!compareVersion(newVersion, localVersion)) return;
       // 处理静默更新/提示更新

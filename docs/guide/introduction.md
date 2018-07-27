@@ -4,6 +4,8 @@
 
 ![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
 
+下载 DEMO 体验[MogoH5+](https://fir.im/p52j)
+
 文档是以`1.3.0`的基础上编写,如果您正在使用老版本出现问题,请加入 QQ 群 780150310 询问
 
 ## 特点
