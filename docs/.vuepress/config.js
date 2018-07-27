@@ -25,12 +25,12 @@ module.exports = {
       {
         title: "最佳实践|Practice",
         collapsable: false,
-        children: ["practice/webview", "practice/details"]
+        children: ["practice/webview", "practice/details", "practice/hotfix"]
       },
       {
-        title: "热点|Hot",
+        title: "关于|About",
         collapsable: false,
-        children: ["hotfix"]
+        children: ["about"]
       }
     ]
   }

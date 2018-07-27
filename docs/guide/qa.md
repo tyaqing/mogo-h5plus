@@ -14,3 +14,44 @@
 
 1.  电脑和调试的手机需要在同一个局域网下面
 2.  `npm start`后如果局域网 ip 地址有变,请同时在 manifest.json 中修改页面入口
+
+## 速度优化方案
+
+最近许多反映脚手架很慢的可以参考一下优化方案,可以大大提高调试/打包速度.
+
+1.2 的版本中移除了一些不必要的插件,应该会快那么一点吧.追求速度的继续往下看.
+
+由于 demo 需要展示各种 ui,加载了各种的 ui 的 loader,所以如果开发者用不到可以将其移除.
+
+### 1.如果不使用 VUX
+
+注释掉 `vux-loader` 即可,在`webpack.base.conf.js`中,修改以下代码
+
+```js
+const vuxLoader = require("vux-loader");
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ["vux-ui"]
+});
+```
+
+修改后
+
+```js
+module.exports = webpackConfig;
+```
+
+### 2.如果不使用 vant
+
+移除掉`.babalrc`中以下代码
+
+```json
+[
+  "import",
+  {
+    "libraryName": "vant",
+    "libraryDirectory": "es",
+    "style": true
+  }
+]
+```

@@ -6,9 +6,9 @@ actionLink: /guide.md
 features:
 - title: Vue多页面
   details: 使用vue+webpack+babel构建的多页面脚手架,开发,调试非常便捷.
-- title: H5+
-  details: H5+提供的强大api让您的app快速具有原生能力.
-- title: 调试
-  details: 使用VConsole工具调试,高效调试.
+- title: 热更新
+  details: 几部简单的操作就可以更新自己的APP,无需繁琐的审核
+- title: 云应用
+  details: 你可以将此想象成[微信-小程序]的关系,快速迭代您的app
 footer: MIT Licensed | Copyright © 2018
 ---
