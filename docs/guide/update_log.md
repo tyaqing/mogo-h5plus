@@ -1,30 +1,6 @@
-<div align=center><img width="50%"  src="https://tyaqing.github.io/mogo-h5plus/logo.png"/></div>
-
-### 使用案例
-
-| [湖南省运会](https://fir.im/kncq)                                                                | [MogoH5+](https://fir.im/p52j)                                                                   |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| ![](https://oivkbuqoc.qnssl.com/6e664136b1e2cf70bdf41488c32caeaa84a4ba40?tmp=1531547639.7200313) | ![](https://oivkbuqoc.qnssl.com/1facce4f4a56f49670c6f010aef07f193334286d?tmp=1531547639.7208393) |
+# 更新日志
 
 ![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
-
-# MogoH5+ 多页面网页解决脚手架
-
-结合 Hbuilder 使用,可以快速开发 WebApp
-
-- `支持 Npm 生态`
-- `支持 vue 语法,以及 vue 生态,比如 vux,mint,vant`
-- `支持 ES6/ES7 语法`
-- `使用 VConsole 调试`
-- `VSCode 友好`
-- `局域网便捷调试,不插数据线也可以调试`
-- `支持mui的使用`
-
-## [文档地址](https://tyaqing.github.io/mogo-h5plus/)
-
-### MogoH5+ QQ 交流群 780150310
-
-## 更新记录
 
 ### 1.3.0 [20180727]
 
@@ -162,11 +138,3 @@ module.exports = webpackConfig;
 ### 0.2.0 [20180623]
 
 - 添加了对 mui 样式和 js 的支持
-
-## 部分截图
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s1.png?raw=true"/></div>
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s2.png?raw=true"/></div>
-
-<div align=center><img width="50%"  src="https://github.com/tyaqing/mogo-h5plus/blob/master/docs/.vuepress/public/s2.png?raw=true"/></div>

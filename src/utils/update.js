@@ -4,12 +4,12 @@ import { getProperty } from "./plus/runtime";
 import { confirm } from "./plus/nativeUI";
 // 暂时自己研究哦 之后的版本会出案例
 
-const appId = "17320319-9b40-48d9-ad39-162733628258";
+const appId = "com.femirror.mogoh5";
+const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 
 let newVersion,
   localVersion,
   downloadUrl,
-  dataType,
   updateSilence = false;
 
 // 检查更新
@@ -19,7 +19,7 @@ export function checkUpdate() {
     .then(inf => {
       localVersion = inf.version; //当前版本      // 获取版本信息
       return request({
-        url: FemirrorAPI + `/public/app/checkUpdate?appId=${appId}`
+        url: updateUrl
       });
     })
     .then(resp => {
@@ -30,8 +30,6 @@ export function checkUpdate() {
       dataType = data.type;
       // 如果版本相等
       if (!compareVersion(newVersion, localVersion)) return;
-      // console.log(newVersion, localVersion);
-      // console.log(compareVersion(newVersion, localVersion));
       // 处理静默更新/提示更新
       downloadUrl = data.android_url;
 
