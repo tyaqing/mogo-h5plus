@@ -5,7 +5,7 @@ import { confirm } from "./plus/nativeUI";
 // 暂时自己研究哦 之后的版本会出案例
 
 const appId = "com.femirror.mogoh5";
-const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
+const updateUrl = LOCALAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 
 let newVersion,
   localVersion,
@@ -20,7 +20,13 @@ export function checkUpdate() {
       localVersion = inf.version; //当前版本      // 获取版本信息
 
       return request({
-        url: updateUrl
+        url: updateUrl,
+        method: "post",
+        data: {
+          version: plus.runtime.version, // 版本 用于统计
+          os: plus.os, //系统信息 用于统计
+          device: plus.device //设备信息  用于统计
+        }
       });
     })
     .then(resp => {
