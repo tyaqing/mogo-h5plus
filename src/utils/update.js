@@ -1,44 +1,24 @@
-import { request } from "./request";
-import { isIos, isAndroid } from "./tools";
-import { getProperty } from "./plus/runtime";
-import { confirm } from "./plus/nativeUI";
-// 暂时自己研究哦 之后的版本会出案例
-
-const appId = "com.femirror.mogoh5";
-const updateUrl = LOCALAPI + `/public/app/checkUpdate?bundleId=${appId}`;
-
 let newVersion,
   localVersion,
   downloadUrl,
   updateSilence = false;
-
 // 检查更新
-export function checkUpdate() {
+export function checkUpdate(updateUrl) {
   // 获取当前应用版本信息
   getProperty()
     .then(inf => {
       localVersion = inf.version; //当前版本      // 获取版本信息
-
-      return request({
-        url: updateUrl,
-        method: "post",
-        data: {
-          version: plus.runtime.version, // 版本 用于统计
-          os: plus.os, //系统信息 用于统计
-          device: plus.device //设备信息  用于统计
-        }
+      return ajax(updateUrl, {
+        version: plus.runtime.version, // 版本 用于统计
+        os: plus.os, //系统信息 用于统计
+        device: plus.device //设备信息  用于统计
       });
     })
-    .then(resp => {
+    .then(data => {
       // 查看最新版本信息
-      const { data } = resp;
-      console.log(data);
       newVersion = data.name;
-      console.log(2);
-      console.log(3);
-      console.log(newVersion, localVersion);
       // 如果版本相等
-      if (!compareVersion(newVersion, localVersion)) return;
+      if (!compareVersion(newVersion, localVersion)) return false;
       // 处理静默更新/提示更新
       downloadUrl = data.android_url;
 
@@ -53,7 +33,6 @@ export function checkUpdate() {
           if (data.platform !== "ios") return false;
         }
       }
-
       // 如果是apk安装,是没法静默更新的
       if (data.type !== "apk" && data.hotupdate_type === "silence") {
         updateSilence = true;
@@ -64,7 +43,6 @@ export function checkUpdate() {
       if (isIos() && data.type === "apk") {
         return false;
       }
-
       return confirm(data.description, data.title);
     })
     .then(selected => {
@@ -74,10 +52,10 @@ export function checkUpdate() {
       }
     })
     .catch(error => {
+      console.log(error);
       //即使错误也不做任何处理
     });
 }
-
 // 下载wgt文件
 function downWgt(url) {
   !updateSilence && plus.nativeUI.showWaiting("下载更新文件...");
@@ -88,7 +66,7 @@ function downWgt(url) {
         installWgt(d.filename); // 安装wgt包
       } else {
         console.log("下载wgt失败！");
-        !updateSilence && plus.nativeUI.alert("下载wgt失败！");
+        !updateSilence && plus.nativeUI.alert("下载更新文件失败！");
       }
       !updateSilence && plus.nativeUI.closeWaiting();
     })
@@ -96,7 +74,7 @@ function downWgt(url) {
 }
 // 更新应用资源
 function installWgt(path) {
-  !updateSilence && plus.nativeUI.showWaiting("安装wgt文件...");
+  !updateSilence && plus.nativeUI.showWaiting("安装更新文件...");
   plus.runtime.install(
     path,
     {},
@@ -139,4 +117,52 @@ function compareVersion(curV, reqV) {
     console.log("版本号不能为空");
     return false;
   }
+}
+
+function isAndroid() {
+  const ua = navigator.userAgent;
+  return ua.match(/(Android);?[\s\/]+([\d.]+)?/);
+}
+
+function isIos() {
+  const ua = navigator.userAgent;
+  return ua.match(/(iPhone\sOS)\s([\d_]+)/);
+}
+
+function getProperty() {
+  return new Promise(resolve => {
+    plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+      resolve(inf);
+    });
+  });
+}
+
+function confirm(message, title = "确认") {
+  return new Promise(resolve => {
+    // plus.nativeUI.confirm(message, resolve, title, ["确认更新", "取消"]);
+    plus.nativeUI.confirm(message, resolve, {
+      title: title,
+      buttons: ["确认更新", "取消"],
+      verticalAlign: "bottom"
+    });
+  });
+}
+
+function ajax(url, data) {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", url, true);
+    // 设置请求头 告诉服务器发给他的数据是json格式
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.send(JSON.stringify(data));
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(JSON.parse(xhr.responseText));
+        } else {
+          reject(xhr);
+        }
+      }
+    };
+  });
 }

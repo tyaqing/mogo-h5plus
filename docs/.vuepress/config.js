@@ -23,9 +23,18 @@ module.exports = {
         ]
       },
       {
+        title: "热更新|Hotfix",
+        collapsable: false,
+        children: [
+          "hotfix/introduction",
+          "hotfix/hotfix",
+          "hotfix/hotfitxFemirror"
+        ]
+      },
+      {
         title: "最佳实践|Practice",
         collapsable: false,
-        children: ["practice/webview", "practice/details", "practice/hotfix"]
+        children: ["practice/webview", "practice/details"]
       },
       {
         title: "关于|About",
