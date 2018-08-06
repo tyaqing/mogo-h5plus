@@ -1,13 +1,15 @@
+"use strict";
+
 (function() {
-  let newVersion,
-    localVersion,
-    downloadUrl,
+  var newVersion = void 0,
+    localVersion = void 0,
+    downloadUrl = void 0,
     updateSilence = false;
   // 检查更新
   function checkUpdate(updateUrl) {
     // 获取当前应用版本信息
     getProperty()
-      .then(inf => {
+      .then(function(inf) {
         localVersion = inf.version; //当前版本      // 获取版本信息
         return ajax(updateUrl, {
           version: plus.runtime.version, // 版本 用于统计
@@ -15,7 +17,7 @@
           device: plus.device //设备信息  用于统计
         });
       })
-      .then(data => {
+      .then(function(data) {
         // 查看最新版本信息
         newVersion = data.name;
         // 如果版本相等
@@ -46,14 +48,15 @@
         }
         return confirm(data.description, data.title);
       })
-      .then(selected => {
+      .then(function(selected) {
         if (selected.index === 0) {
           // 如果是苹果系统 然后是安装包
           downWgt(downloadUrl);
         }
       })
-      .catch(error => {
+      .catch(function(error) {
         console.log(error);
+        console.log(JSON.stringify(error));
         //即使错误也不做任何处理
       });
   }
@@ -121,25 +124,30 @@
   }
 
   function isAndroid() {
-    const ua = navigator.userAgent;
+    var ua = navigator.userAgent;
     return ua.match(/(Android);?[\s\/]+([\d.]+)?/);
   }
 
   function isIos() {
-    const ua = navigator.userAgent;
+    var ua = navigator.userAgent;
     return ua.match(/(iPhone\sOS)\s([\d_]+)/);
   }
 
   function getProperty() {
-    return new Promise(resolve => {
+    return new Promise(function(resolve) {
       plus.runtime.getProperty(plus.runtime.appid, function(inf) {
         resolve(inf);
       });
     });
   }
 
-  function confirm(message, title = "确认") {
-    return new Promise(resolve => {
+  function confirm(message) {
+    var title =
+      arguments.length > 1 && arguments[1] !== undefined
+        ? arguments[1]
+        : "确认";
+
+    return new Promise(function(resolve) {
       // plus.nativeUI.confirm(message, resolve, title, ["确认更新", "取消"]);
       plus.nativeUI.confirm(message, resolve, {
         title: title,
@@ -150,7 +158,7 @@
   }
 
   function ajax(url, data) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open("post", url, true);
       // 设置请求头 告诉服务器发给他的数据是json格式
