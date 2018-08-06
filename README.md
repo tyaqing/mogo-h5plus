@@ -28,9 +28,9 @@
 
 您的赞助会使`MogoH5+`发展的更好.
 
-| 微信                                                                               | 支付宝                                                                                |
-| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| <img width="200" :src="https://tyaqing.github.io/mogo-h5plus/wxpay.JPG" alt="foo"> | <img  width="200"  :src="https://tyaqing.github.io/mogo-h5plus/alipay.JPG" alt="foo"> |
+| 微信                                                                              | 支付宝                                                                               |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| <img width="200" src="https://tyaqing.github.io/mogo-h5plus/wxpay.JPG" alt="foo"> | <img  width="200"  src="https://tyaqing.github.io/mogo-h5plus/alipay.JPG" alt="foo"> |
 
 ## 更新记录
 
