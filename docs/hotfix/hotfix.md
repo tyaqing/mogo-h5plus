@@ -39,21 +39,15 @@
 在这里顺便提一下,苹果用户的习惯一般是自己主动更新.
 在苹果应用商店的大厂 app (微信,淘宝,京东) 更新几乎不会受到 app 的更新推送,也没有所谓`检查更新`的功能,也就是说,更新是用户主动操作的.我们的`迭代`同样也遵循这条`行规`.
 
-## plus 提前生效
-
-由于升级需要 plus 提前生效,请在`title`下加入下面这句`script`,如果是脚手架用户,可以在`page.json`中加入管道符`|plusReady`达到同样的效果
-
-```html
-<script src="html5plus://ready"></script>
-```
-
-加入之后就可以引入`hotfix`
-
 ## 引入方式
 
 可以在`main.js`中添加`checkUpdate(URL);`,打开 app 就会自动检测.还可以放在`检查更新`的按钮上触发.
 
 ### ES6 Module 引入
+
+首先在`page.json`把用到`checkUpdate`的页面加上管道`|plusReady`.
+
+然后加载使用.
 
 ```js
 import { checkUpdate } from "./utils/update";
@@ -65,6 +59,9 @@ checkUpdate(URL); // 填入您检查api的url地址
 这种用于没有使用脚手架的开发者
 
 ```html
+<title>APP</title>
+<script src="html5plus://ready"></script>  // 这段必须加载title底下
+....
 <script src="path/update.js"></script>
 <script>
   checkUpdate('https://api.hotfix.femirror.com/public/app/checkUpdate?bundleId=你的appId'); // 填入您检查api的url地址
