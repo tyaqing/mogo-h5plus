@@ -10,6 +10,7 @@
     // 获取当前应用版本信息
     getProperty()
       .then(function(inf) {
+        console.log(JSON.stringify(inf));
         localVersion = inf.version; //当前版本      // 获取版本信息
         return ajax(updateUrl, {
           version: plus.runtime.version, // 版本 用于统计
@@ -66,9 +67,11 @@
     plus.downloader
       .createDownload(url, { filename: "_doc/update/" }, function(d, status) {
         if (status == 200) {
+          console.log(2);
           console.log("下载wgt成功：" + d.filename);
           installWgt(d.filename); // 安装wgt包
         } else {
+          console.log(3);
           console.log("下载wgt失败！");
           !updateSilence && plus.nativeUI.alert("下载更新文件失败！");
         }
