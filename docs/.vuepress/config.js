@@ -5,7 +5,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "主页", link: "/" },
-      { text: "MogoH5+", link: "/guide/" },
+      { text: "MogoH5+", link: "/guide/guide.md" },
       { text: "Hotfix", link: "/hotfix/introduction.md" },
       { text: "H5+文档", link: "http://www.html5plus.org/doc/h5p.html" }
     ],

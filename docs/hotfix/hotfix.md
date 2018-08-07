@@ -1,4 +1,4 @@
-# Hotfix
+# Hotfix [项目地址](https://github.com/tyaqing/hotfix)
 
 热更新能够不提交应用商店审核而修改 APP 内容,使得 app 的迭代变的非常灵活.
 
