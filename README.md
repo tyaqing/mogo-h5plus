@@ -36,7 +36,7 @@
 
 ### 2.0.0 [20180806]
 
-这次主要是发布了`FEmirror 云更新`,[访问地址](https://hotfix.femirror.com).
+这次主要是发布了`FEmirror 云更新`内测版,[访问地址](https://hotfix.femirror.com).
 可以让您几分钟就能接入`app更新`服务.
 
 #### [新增]

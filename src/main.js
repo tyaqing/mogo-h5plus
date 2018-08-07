@@ -3,7 +3,7 @@
 import Vue from "vue";
 import "./utils/common";
 import App from "./App";
-import { checkUpdate } from "./utils/update";
+import { checkUpdate } from "./utils/hotfix";
 const appId = "com.femirror.mogoh5";
 const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 checkUpdate(updateUrl);

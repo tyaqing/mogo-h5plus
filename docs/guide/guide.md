@@ -1,6 +1,6 @@
-![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
-
 # 简介
+
+![GitHub tag](https://img.shields.io/github/tag/tyaqing/mogo-h5plus.svg)
 
 `MogoH5+` 是一个 vue 多页面**脚手架工具**,结合 H5+可以快速开发安卓与苹果 APP.
 

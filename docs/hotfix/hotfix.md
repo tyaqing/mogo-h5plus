@@ -50,7 +50,7 @@
 然后加载使用.
 
 ```js
-import { checkUpdate } from "./utils/update";
+import { checkUpdate } from "./utils/hotfix";
 checkUpdate(URL); // 填入您检查api的url地址
 ```
 
@@ -62,7 +62,7 @@ checkUpdate(URL); // 填入您检查api的url地址
 <title>APP</title>
 <script src="html5plus://ready"></script>  // 这段必须加载title底下
 ....
-<script src="path/update.js"></script>
+<script src="path/hotfix-bs.js"></script>
 <script>
   checkUpdate('https://api.hotfix.femirror.com/public/app/checkUpdate?bundleId=你的appId'); // 填入您检查api的url地址
 </script>
@@ -75,7 +75,7 @@ checkUpdate(URL); // 填入您检查api的url地址
 1.  静默更新 : 使用`checkUpdate`方法后检查更新,如果有更新会自动下载 app,整个过程没有任何提示,用户第二次打开 app 就会出现更新后的效果.
 2.  提示更新 : 使用`checkUpdate`方法后检查更新,如果有则会弹出确认框,用户确认后会提示正在下载,正在安装,安装完成重启,更新完成等提示.
 
-如果您更新后不想立即重启,可以注释掉`update.js`中的函数`plus.runtime.restart();`,这样,app 会在用户第二打开的时候自动完成更新.
+如果您更新后不想立即重启,可以注释掉`hotfix.js`中的函数`plus.runtime.restart();`,这样,app 会在用户第二打开的时候自动完成更新.
 
 ## 后端接收的数据格式
 
