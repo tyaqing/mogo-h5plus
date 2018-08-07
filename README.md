@@ -24,6 +24,17 @@
 
 ### MogoH5+ QQ 交流群 780150310
 
+### [Hotfix](https://github.com/tyaqing/hotfix) 让您的Hbuilder APP应用快速拥有更新能力.
+
+## 赞助
+
+您的赞助会使`MogoH5+`发展的更好.
+
+| 微信                                                                              | 支付宝                                                                               |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| <img width="200" src="https://tyaqing.github.io/mogo-h5plus/wxpay.JPG" alt="foo"> | <img  width="200"  src="https://tyaqing.github.io/mogo-h5plus/alipay.JPG" alt="foo"> |
+
+
 ## 更新记录
 
 ### 1.3.0 [20180727]
