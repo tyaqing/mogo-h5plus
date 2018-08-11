@@ -5,7 +5,7 @@ const webpack = require("webpack");
 const config = require("../config");
 const merge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.conf");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
@@ -84,11 +84,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     // keep module.id stable when vendor modules does not change
     // new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
-    new webpack.optimize.ModuleConcatenationPlugin()
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor',
-    //   minChunks (module) {
+    //   minChunks(module) {
     //     // any required modules inside node_modules are extracted to vendor
     //     return (
     //       module.resource &&
@@ -116,13 +116,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // }),
 
     // copy custom static assets
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, "../static"),
-    //     to: config.build.assetsSubDirectory,
-    //     ignore: [".*"]
-    //   }
-    // ])
+
   ]
 });
 

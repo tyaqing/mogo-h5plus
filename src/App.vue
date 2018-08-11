@@ -140,7 +140,8 @@ export default {
               // 底部分割线
               color: "#cccccc"
             }
-          }
+          },
+          popGesture: "none"
         }
       }
     ]);
@@ -182,33 +183,33 @@ export default {
     },
     openCart() {
       showWebviewById("goods.cart");
-      // 重写了标题样式
-      // openWebview(
-      //   {
-      //     url: "./goods.cart.html",
-      //     id: "goods.cart"
-      //   },
-      //   {
-      //     titleNView: {
-      //       backgroundColor: "#f7f7f7", // 导航栏背景色
-      //       titleText: "购物车", // 导航栏标题
-      //       titleColor: "#666", // 文字颜色
-      //       // type: "transparent", // 透明渐变样式
-      //       autoBackButton: true, // 自动绘制返回箭头
-      //       splitLine: {
-      //         // 底部分割线
-      //         color: "#cccccc"
-      //       }
-      //     }
-      //   },
-      //   {
-      //     id: 2018,
-      //     name: "超级红苹果"
-      //   }
-      // );
     },
     openMui() {
-      openWebviewFast("./mui.index.html", "mui.index", "Mui演示");
+      // 重写了标题样式
+      openWebview(
+        {
+          url: "./mui.index.html",
+          id: "mui.index"
+        },
+        {
+          titleNView: {
+            backgroundColor: "#f7f7f7", // 导航栏背景色
+            titleText: "MUI演示", // 导航栏标题
+            titleColor: "#666", // 文字颜色
+            // type: "transparent", // 透明渐变样式
+            autoBackButton: true, // 自动绘制返回箭头
+            splitLine: {
+              // 底部分割线
+              color: "#cccccc"
+            }
+          }
+        },
+        {
+          id: 2018,
+          name: "超级红苹果"
+        }
+      );
+      // openWebview("./mui.index.html", "mui.index", "Mui演示");
     },
     camera() {
       var cmr = plus.camera.getCamera();

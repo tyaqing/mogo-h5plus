@@ -7,7 +7,7 @@
          
 
     <br>
-    <h4 style="text-align:center">Mui</h4>
+    <h4 style="text-align:center">Mui V2.0 </h4>
     <p style="text-align:center;padding:10px 20px">这里主要演示MUI的一些样式和JS,我仍然推荐您使用其他vueUI(Vux,Vant,mint)来代替mui</p>
     <br> &nbsp;
     <button @click="alert" type="button" class="mui-btn">alert</button>
@@ -58,5 +58,4 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../assets/mui/mui.css";
 </style>

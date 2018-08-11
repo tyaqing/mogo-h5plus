@@ -32,7 +32,7 @@ export function openWebview(config, style = {}, extras = {}) {
   // 监听窗口加载成功
   wv.addEventListener(
     "loaded",
-    function() {
+    function () {
       wv.show("slide-in-right"); // 显示窗口
       w.close();
       w = null;
@@ -58,11 +58,11 @@ export function openWebviewFast(url, id, title) {
           // 底部分割线
           color: "#cccccc"
         }
-      }
+      },
     },
     "slide-in-right",
     420,
-    function() {
+    function () {
       plus.nativeUI.closeWaiting();
     }
   );

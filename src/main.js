@@ -5,7 +5,7 @@ import "./utils/common";
 import App from "./App";
 import { checkUpdate } from "./utils/hotfix";
 const appId = "com.femirror.mogoh5";
-const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
+const updateUrl = LOCALAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 checkUpdate(updateUrl);
 
 Vue.config.productionTip = false;

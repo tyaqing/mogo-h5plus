@@ -5,6 +5,7 @@ const utils = require("./utils");
 const config = require("../config");
 const vueLoaderConfig = require("./vue-loader.conf");
 const multiBuilder = require("./multipage");
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
 
@@ -45,7 +46,10 @@ if (process.env.NODE_ENV === "production") {
 const webpackConfig = {
   context: path.resolve(__dirname, "../"),
   entry: {
-    ...extraEntry
+    ...extraEntry,
+    vue: ['vue'],
+
+
   },
   output: {
     path: config.build.assetsRoot,
@@ -118,7 +122,13 @@ const webpackConfig = {
     tls: "empty",
     child_process: "empty"
   },
-  plugins: [...extraHtmlWebpackPlugins, new webpack.DefinePlugin(Defines)]
+  plugins: [...extraHtmlWebpackPlugins, new webpack.DefinePlugin(Defines),
+  new CommonsChunkPlugin({
+    name: ["vue"],
+
+    minChunks: 2
+
+  })]
 };
 
 const vuxLoader = require("vux-loader");

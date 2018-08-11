@@ -8,35 +8,35 @@
 
   <%= htmlWebpackPlugin.options.plusReady %>
     <!-- 如果有使用mui,就不要注释下面的标签  -->
-    <script><%= htmlWebpackPlugin.options.muiScriptString %></script>
 
+    <%= htmlWebpackPlugin.options.muiCssString %>
 
-    <title>Mogo H5plus</title>
+      <title>Mogo H5plus</title>
 </head>
 
 <body>
   <div id="app"></div>
   <script>
-      function plusReady() {
-        plus.key.addEventListener(
-          "backbutton",
-          function () {
-            // console.log('可能也到了这里')
-            var ws = plus.webview.currentWebview();
-            // print(ws)
-            if (ws.webviewPreload == true) {
-              plus.webview.hide(ws, 'auto');
-              // console.log('影藏了');
-            } else {
-              plus.webview.close(ws);
-              // console.log('关闭了');
-            }
-            // console.log(ws)
+    function plusReady() {
+      plus.key.addEventListener(
+        "backbutton",
+        function () {
+          // console.log('可能也到了这里')
+          var ws = plus.webview.currentWebview();
+          // print(ws)
+          if (ws.webviewPreload == true) {
+            plus.webview.hide(ws, 'auto');
+            // console.log('影藏了');
+          } else {
+            plus.webview.close(ws, 'auto');
+            // console.log('关闭了');
+          }
+          // console.log(ws)
 
-          },
-          false
-        );
-      }
+        },
+        false
+      );
+    }
     if (window.plus) {
       plusReady();
     } else {
@@ -108,6 +108,7 @@
     };
 
   </script>
+  <%= htmlWebpackPlugin.options.muiScriptString %>
 </body>
 
 </html>
