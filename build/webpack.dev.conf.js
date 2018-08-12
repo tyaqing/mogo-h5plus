@@ -6,8 +6,6 @@ const merge = require("webpack-merge");
 const path = require("path");
 const baseWebpackConfig = require("./webpack.base.conf");
 
-var vConsolePlugin = require("vconsole-webpack-plugin");
-
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 const portfinder = require("portfinder");
 
@@ -55,9 +53,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
-    new vConsolePlugin({
-      enable: true // 发布代码前记得改回 false
-    })
+
     // https://github.com/ampedandwired/html-webpack-plugin
     // new HtmlWebpackPlugin({
     //   filename: 'index.html',
@@ -94,7 +90,7 @@ module.exports = new Promise((resolve, reject) => {
           compilationSuccessInfo: {
             messages: [
               `Your application is running here: http://${
-                devWebpackConfig.devServer.host
+              devWebpackConfig.devServer.host
               }:${port}`
             ]
           },

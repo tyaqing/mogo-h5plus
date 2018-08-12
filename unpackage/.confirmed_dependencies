@@ -11,6 +11,12 @@
   "dist/vux.index.html": {
     "resources": [
       "dist/assets/css/vux.index.css"
+    ],
+    "refer": []
+  },
+  "dist/goods.detail.html": {
+    "resources": [
+      "dist/assets/css/goods.detail.css"
     ]
   }
 }

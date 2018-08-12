@@ -7,6 +7,7 @@ const vueLoaderConfig = require("./vue-loader.conf");
 const multiBuilder = require("./multipage");
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
+
 const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
 
 function resolve(dir) {

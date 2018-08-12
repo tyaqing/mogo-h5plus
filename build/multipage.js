@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin-for-multihtml");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const config = require("../config");
+var vConsolePlugin = require("vconsole-webpack-plugin");
 // 通过页面配置文件过去页面json
 function generateByConfig() {
   return JSON.parse(fs.readFileSync("./src/page.json"));
@@ -51,6 +52,9 @@ if (haveMui) {
     ])
   )
 }
+extraHtmlWebpackPlugins.push(new vConsolePlugin({
+  enable: true // 发布代码前记得改回 false
+}), )
 
 exports.extraEntry = newExtraEntry;
 exports.extraHtmlWebpackPlugins = extraHtmlWebpackPlugins;
