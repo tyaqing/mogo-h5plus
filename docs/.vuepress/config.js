@@ -1,6 +1,6 @@
 module.exports = {
   title: "MogoH5+",
-  description: "快速开发WebApp的多页面脚手架工具",
+  description: "快速开发WebApp的多页面脚手架工具,致力于打造H5+应用生态.",
   base: "/mogo-h5plus/",
   themeConfig: {
     nav: [
@@ -35,7 +35,19 @@ module.exports = {
           children: ["about"]
         }
       ],
-      "/hotfix/": ["introduction", "usage", "hotfix", "hotfitxFemirror"]
+      "/hotfix/": [{
+        title: "新版本|V1",
+        collapsable: false,
+        children: [
+          "introduction", "config", "hotfitxFemirror"
+        ]
+      }, {
+        title: "旧版本|Old",
+        collapsable: true,
+        children: [
+          "old/introduction", "old/usage", "old/hotfix", "old/hotfitxFemirror"
+        ]
+      }]
     }
   }
 };

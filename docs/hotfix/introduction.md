@@ -1,46 +1,65 @@
 # 介绍
 
-> `Hotfix`+`FEmirror 云更新` 让您的 H5+应用快速拥有热更新功能.
+> `Hotfix`+`FEmirror 云更新` 只需`几分钟` , 让您的 H5+应用快速拥有热更新功能.
 
-只需`几分钟`,让您的应用拥有更新能力!
 
 | iphone 热更新 效果如下                                           | 安卓热更新效果如下                                                    | 安卓安装更新如下                                                      |
 | ---------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | <img   width="400"  :src="$withBase('/IMG_0040.PNG')" alt="foo"> | <img   width="400"  :src="$withBase('/S80805-211149.jpg')" alt="foo"> | <img   width="400"  :src="$withBase('/S80806-112100.jpg')" alt="foo"> |
 
-## 组成部分
 
-### Hotfix
 
-`Hotfix` 是一个适用于 H5+应用的一个`拓展库`.可以自动完成热更新,和安装更新任务.
+## 快速使用 [项目地址](https://github.com/tyaqing/hotfix)
 
-只要您的 app 是使用 Hbuilder 开发的,就可以使用 `Hotfix`.具体接入方式请[查看教程](hotfix.md)
+### 安装
+#### npm 安装
 
-### 云更新
+```bash
+npm i h5plus-hotfix -S
+```
 
-`更新云` 是一个`app`版本更新的管理平台,提供版本更新服务.
+#### script加载
 
-单独的 `Hotfix` 还需要后端的协作,比如`版本管理`,`下载服务`.
+```html
+<script src="hotfix-bs.js"></script>
+```
 
-`FEmirror 云更新`就是为您提供`版本管理`,`下载服务`的服务的.
+### 使用
 
-### 如何 3 分钟接入云更新
-
-#### 1.如果您是 MogoH5+ 开发者
-
-如果您是`MogoH5+`的开发者,`1.3`后是内置了热更新,只要后端完成相关更新逻辑,就可以使用了.
-
-如果想要更快的方式接入,可以使用`FEmirror 云更新`
-
-#### 2.如果您是 Hbuilder 开发者
-
-如果您的应用是使用`mui`开发,也没有使用`Mogoh5+`,您可以以`<script>`的方式引入`hotfix`获得更新能力.
-
-同样,搭配`FEmirror 云更新`使用可以让您快速获得热更新能力.
-
-### `FEmirror 云更新` 下一步计划
-
-下一步会加入数据统计,比如安装设备的系统分布,版本分布等,您也可以提出宝贵意见
+```js
+hotfix({
+  url: updateUrl,
+  before(data) {
+    // 确认安装
+    return new Promise(resolve => {
+      plus.nativeUI.confirm(data.title, (selected) => {
+        if (selected.index === 0) {
+          plus.nativeUI.showWaiting("下载更新文件...");
+          resolve(data);
+        }
+      }, {
+          title: data.description,
+          buttons: ["确认更新", "取消"],
+          verticalAlign: "bottom"
+        });
+    });
+  },
+  success() {
+    console.log('安装成功')
+    plus.runtime.restart(); // 重启app 
+    plus.nativeUI.closeWaiting();
+  },
+  error(e) {
+    // 错误显示
+    plus.nativeUI.closeWaiting();
+    console.log("安装wgt文件失败[" + e.code + "]：" + e.message);
+    plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
+  },
+  onProgress(p) {
+    console.log(p) // 下载进度
+  }
+});
+```
 
 ## 赞助
 

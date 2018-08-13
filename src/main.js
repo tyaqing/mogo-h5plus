@@ -10,6 +10,7 @@ const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 hotfix({
   url: updateUrl,
   before(data) {
+    // 确认安装
     return new Promise(resolve => {
       plus.nativeUI.confirm(data.title, (selected) => {
         if (selected.index === 0) {
@@ -29,13 +30,13 @@ hotfix({
     plus.nativeUI.closeWaiting();
   },
   error(e) {
+    // 错误显示
     plus.nativeUI.closeWaiting();
     console.log("安装wgt文件失败[" + e.code + "]：" + e.message);
     plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
-
   },
   onProgress(p) {
-    console.log(p)
+    console.log(p) // 下载进度
   }
 });
 
