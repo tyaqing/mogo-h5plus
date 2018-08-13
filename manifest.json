@@ -274,7 +274,8 @@
 			},
 			"dist/goods.cart.html": {
 				"resources": [
-					"dist/assets/css/goods.cart.css"
+					"dist/assets/css/goods.cart.css",
+					"dist/assets/css/vue.css"
 				],
 				"refer": [],
 				"priority": 0

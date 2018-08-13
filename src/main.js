@@ -5,7 +5,7 @@ import "./utils/common";
 import App from "./App";
 import hotfix from "./utils/hotfix";
 const appId = "com.femirror.mogoh5";
-const updateUrl = LOCALAPI + `/public/app/checkUpdate?bundleId=${appId}`;
+const updateUrl = FemirrorAPI + `/public/app/checkUpdate?bundleId=${appId}`;
 hotfix({
   url: updateUrl,
   before(data) {

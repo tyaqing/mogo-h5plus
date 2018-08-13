@@ -1,5 +1,4 @@
 export default function ({ url, success, error, before, onProgress }) {
-
   // 对环境的要求
   getProperty().then((inf) => {
     console.log(inf)
@@ -13,15 +12,12 @@ export default function ({ url, success, error, before, onProgress }) {
     .then(data => {
       // 获取到更新信息
       return before(data);
-      // return data;
     }).then((data) => {
-      console.log('下载?')
       return downWgt(data.android_url, onProgress);
     }).then((localPath) => {
       return installWgt(localPath);
-      // installWgt
     }).then(() => {
-      success(localPath);
+      success();
     }).catch(error)
 }
 // 下载wgt文件
@@ -74,7 +70,7 @@ function ajax(url, data) {
     };
   });
 }
-
+// 获取设备版本信息
 function getProperty() {
   return new Promise(resolve => {
     plus.runtime.getProperty(plus.runtime.appid, function (inf) {

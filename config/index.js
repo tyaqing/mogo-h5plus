@@ -26,7 +26,7 @@ module.exports = {
       },
       "/femirror": {
         name: "FemirrorAPI",
-        target: "https://www.femirror.com",
+        target: "https://api.hotfix.femirror.com",
         pathRewrite: { "^/femirror": "" },
         changeOrigin: true,
         secure: false
