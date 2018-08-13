@@ -3,8 +3,11 @@
 import Vue from "vue";
 import "./utils/common";
 import App from "./App";
-import { checkUpdate } from "./utils/update";
-checkUpdate();
+import { checkUpdate } from "./utils/hotfix";
+const appId = "com.femirror.mogoh5";
+const updateUrl = LOCALAPI + `/public/app/checkUpdate?bundleId=${appId}`;
+// checkUpdate(updateUrl);
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

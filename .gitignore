@@ -17,3 +17,5 @@ yarn-error.log*
 #Hbuilder
 unpackage/debug/
 unpackage/release/
+
+/docs/.vuepress/dist

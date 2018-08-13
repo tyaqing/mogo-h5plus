@@ -5019,7 +5019,7 @@ body > .mui-progressbar
     font-weight: normal;
     font-style: normal;
 
-    src: url('../fonts/mui.ttf') format('truetype');
+    src: url('./mui.ttf') format('truetype');
 }
 .mui-icon
 {

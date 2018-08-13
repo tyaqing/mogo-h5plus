@@ -48,7 +48,7 @@ export default {
           if (e.index === 0) {
             plus.nativeUI.toast("离开了");
             const ws = plus.webview.currentWebview();
-            ws.hide();
+            ws.hide("auto");
           } else {
             plus.nativeUI.toast("留住了");
           }
