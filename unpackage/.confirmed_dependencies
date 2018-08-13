@@ -6,17 +6,28 @@
       "dist/vux.index.html",
       "dist/goods.cart.html"
     ],
-    "resources": []
+    "resources": [
+      "dist/assets/css/vue.css",
+      "dist/assets/css/index.css",
+      "dist/assets/img/logo.png"
+    ]
   },
   "dist/vux.index.html": {
     "resources": [
-      "dist/assets/css/vux.index.css"
+      "dist/assets/css/vux.index.css",
+      "dist/assets/css/vue.css"
     ],
     "refer": []
   },
   "dist/goods.detail.html": {
     "resources": [
       "dist/assets/css/goods.detail.css"
+    ],
+    "refer": []
+  },
+  "dist/goods.cart.html": {
+    "resources": [
+      "dist/assets/css/goods.cart.css"
     ]
   }
 }

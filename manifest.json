@@ -243,7 +243,11 @@
 		},
 		"pages": {
 			"dist/index.html": {
-				"resources": [],
+				"resources": [
+					"dist/assets/css/vue.css",
+					"dist/assets/css/index.css",
+					"dist/assets/img/logo.png"
+				],
 				"refer": [
 					"dist/user/index.html",
 					"dist/goods.detail.html",
@@ -255,7 +259,8 @@
 			},
 			"dist/vux.index.html": {
 				"resources": [
-					"dist/assets/css/vux.index.css"
+					"dist/assets/css/vux.index.css",
+					"dist/assets/css/vue.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -263,6 +268,13 @@
 			"dist/goods.detail.html": {
 				"resources": [
 					"dist/assets/css/goods.detail.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dist/goods.cart.html": {
+				"resources": [
+					"dist/assets/css/goods.cart.css"
 				],
 				"refer": [],
 				"priority": 0

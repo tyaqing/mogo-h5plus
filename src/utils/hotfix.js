@@ -1,5 +1,6 @@
 export default function ({ url, success, error, before, onProgress }) {
 
+  // 对环境的要求
   getProperty().then((inf) => {
     console.log(inf)
     console.log(plus.runtime.version)
