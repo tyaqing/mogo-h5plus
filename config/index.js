@@ -7,6 +7,7 @@ const ip = require("ip");
 module.exports = {
   dev: {
     // Paths
+    vConsole: true, //是否显示VConsole
     assetsSubDirectory: "static",
     assetsPublicPath: "/",
     proxyTable: {
@@ -26,7 +27,7 @@ module.exports = {
       },
       "/femirror": {
         name: "FemirrorAPI",
-        target: "https://www.femirror.com",
+        target: "https://api.hotfix.femirror.com",
         pathRewrite: { "^/femirror": "" },
         changeOrigin: true,
         secure: false
@@ -65,6 +66,8 @@ module.exports = {
   },
 
   build: {
+
+    vConsole: true, //是否显示VConsole
     // Template for index.html
     index: path.resolve(__dirname, "../dist/index.html"),
 

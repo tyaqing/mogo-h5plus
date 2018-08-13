@@ -6,6 +6,7 @@ const config = require("../config");
 const vueLoaderConfig = require("./vue-loader.conf");
 const multiBuilder = require("./multipage");
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+var vConsolePlugin = require("vconsole-webpack-plugin");
 
 const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
 
@@ -123,9 +124,11 @@ const webpackConfig = {
     child_process: "empty"
   },
   plugins: [...extraHtmlWebpackPlugins, new webpack.DefinePlugin(Defines),
+  new vConsolePlugin({
+    enable: config.dev.vConsole // 发布代码前记得改回 false
+  }),
   new CommonsChunkPlugin({
     name: ["vue"],
-
     minChunks: 2
 
   })]

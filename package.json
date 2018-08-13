@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "fastclick": "git+https://github.com/mogoclub/fastclick.git",
+    "h5plus-hotfix": "^1.0.0",
     "vant": "^1.1.10",
     "vconsole": "^3.2.0",
     "vue": "^2.5.2",

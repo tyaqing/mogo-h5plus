@@ -43,6 +43,8 @@
 1. `vue`以`commonChunk`的形式加载,多个页面加载同一个`vue`,减少了体积.
 2. `mui`都会已公共文件的形式加载,减少了打包后的体积.
 3. 修改了`webpack`部分配置,减少体积的同时,编译速度提高了很多.
+4. 可以在`config/index.js`中配置是否载入`VConsole`,意味着你可以在`build`环境中使用`VConsole`
+5. 加入`h5plus-hotfix`模块,启用应用的热更新
 
 #### [修改]
 
