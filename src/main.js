@@ -24,9 +24,8 @@ hotfix({
   },
   success(data) {
     console.log('安装成功')
-    plus.runtime.restart(); // 重启app
+    plus.runtime.restart(); // 重启app 
     plus.nativeUI.closeWaiting();
-
   },
   error(e) {
     plus.nativeUI.closeWaiting();

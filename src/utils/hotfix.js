@@ -1,5 +1,6 @@
 export default function ({ url, success, error, before, onProgress }) {
   // 对环境的要求
+  let resData;
   getProperty().then((inf) => {
     console.log(inf)
     console.log(plus.runtime.version)
@@ -11,9 +12,10 @@ export default function ({ url, success, error, before, onProgress }) {
   })
     .then(data => {
       // 获取到更新信息
-      return before(data);
-    }).then((data) => {
-      return downWgt(data.android_url, onProgress);
+      resData = data;
+      return before(resData);
+    }).then(() => {
+      return downWgt(resData.android_url, onProgress);
     }).then((localPath) => {
       return installWgt(localPath);
     }).then(() => {
@@ -46,7 +48,7 @@ function installWgt(path) {
     {
       plus.runtime.install(path, { force: true }, function () {
         resove()
-      }, reject);
+      }, (err) => reject(err, 'installWgt'));
     }
   })
 }
@@ -63,6 +65,7 @@ function ajax(url, data) {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve(JSON.parse(xhr.responseText));
         } else {
+          console.log(xhr)
           // reject(xhr);
           // 避免网络错误
         }
