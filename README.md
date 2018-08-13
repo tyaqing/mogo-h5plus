@@ -24,6 +24,8 @@
 
 ### MogoH5+ QQ 交流群 780150310
 
+### [Hotfix](https://github.com/tyaqing/hotfix) 让您的Hbuilder APP应用快速拥有更新能力.
+
 ## 赞助
 
 您的赞助会使`MogoH5+`发展的更好.
