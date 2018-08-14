@@ -71,7 +71,7 @@ export function openWebviewFast(url, id, title) {
 export function preLoad(webviews = []) {
   webviews.map(webview => {
     const fullExtras = {
-      webviewPreload: 1,
+      webviewPreload: true,
       ...webview.extras
     };
     plus.webview.create(
