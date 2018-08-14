@@ -15,7 +15,7 @@ let newExtraEntry = {};
 
 // 生成HtmlWebpackPlugin
 let extraHtmlWebpackPlugins = [];
-let haveMui = false;
+let haveMui = 0;
 for (let i in extraEntry) {
   // 配置是否使用mui plusready
   const useMui = /\S+\|mui/.test(i);
