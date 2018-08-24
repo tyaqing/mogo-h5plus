@@ -115,7 +115,7 @@ demo 的请求使用的是 `axios`,同样你喜欢什么库都可以自己去封
 
 由于`npm start`后,调试网页是挂在局域网上,并且作为 Hbuilder 的`页面入口`,因此,在请求时会出现`跨域`.
 
-在`./build.js`中使用本地代理,将下面的`https://api.douban.com`修改成自己使用的业务域名即可.
+在`/config/index.js`中使用本地代理,将下面的`https://api.douban.com`修改成自己使用的业务域名即可.
 
 ```javascript
 proxy: {
