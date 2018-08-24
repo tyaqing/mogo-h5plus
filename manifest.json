@@ -3,7 +3,7 @@
   "id": "com.femirror.mogoh5" /*应用的标识，创建应用时自动生成，勿手动修改*/,
   "name": "MogoH5+" /*应用名称，程序桌面图标名称*/,
   "version": {
-    "name": "1.3.45" /*应用版本名称*/,
+    "name": "1.6.0" /*应用版本名称*/,
     "code": "141"
   },
   "description": "MogoH5+" /*应用描述信息*/,
@@ -66,9 +66,7 @@
         "permissions": ["<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
         /*使用Native.js调用原生安卓API需要使用到的系统权限*/
       },
-      "orientation": [
-        "portrait-primary"
-      ] /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/,
+      "orientation": ["portrait-primary","landscape-secondary"] /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/,
       "icons": {
         "ios": {
           "prerendered": true /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/,
