@@ -18,7 +18,7 @@
     "axios": "^0.18.0",
     "fastclick": "git+https://github.com/mogoclub/fastclick.git",
     "h5plus-hotfix": "^1.0.1",
-    "vant": "^1.1.10",
+    "vant": "^2.1.8",
     "vconsole": "^3.2.0",
     "vue": "^2.5.2",
     "vux": "^2.9.2"
