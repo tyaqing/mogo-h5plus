@@ -15,7 +15,7 @@
     "docs:publish": "cd docs && ./deploy.sh"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "fastclick": "git+https://github.com/mogoclub/fastclick.git",
     "h5plus-hotfix": "^1.0.1",
     "vant": "^1.1.10",
